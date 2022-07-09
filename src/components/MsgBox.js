@@ -6,15 +6,11 @@ import {
   Stack
 } from "@chakra-ui/react";
 
-function Card({name}) {
-  const getLink = async() => {
-    const msg = await axios.get('http://localhost/3001/api/get/message')
-  }
+function MsgBox({sender, to, msg}) {
   return (
     <Box
-      p={4}
+      p={9}
       display={{ md: "flex" }}
-      maxWidth="32rem"
       borderWidth={1}
       margin={2}
     >
@@ -31,14 +27,23 @@ function Card({name}) {
           letterSpacing="wide"
           color="teal.600"
         >
-          {name}
+          From : {sender}
+        </Text>
+        <Text
+          fontWeight="bold"
+          textTransform="uppercase"
+          fontSize="lg"
+          letterSpacing="wide"
+          color="teal.600"
+        >
+          To : {to}
         </Text>
         <Text my={2} color="gray.500">
-          text
+          msg: {msg}
         </Text>
       </Stack>
     </Box>
   );
 }
 
-export default Card;
+export default MsgBox;

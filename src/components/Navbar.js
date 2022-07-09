@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   Avatar,
-  Link,
   Button,
   Menu,
   MenuButton,
@@ -16,6 +15,7 @@ import {
   Center,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { Link } from 'react-router-dom';
 
 export default function Nav() {
 
@@ -23,12 +23,12 @@ export default function Nav() {
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box>Menfess Yuk</Box>
+          <Link to="/dashboard">Menfess Yuk</Link>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
               <Button>
-                ANJAY
+                LOGOUT
               </Button>
 
               <Menu>
