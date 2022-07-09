@@ -15,11 +15,21 @@ import {
   Center,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Nav() {
-
+  const navigate = useNavigate()
+  const logout = async () => {
+    try{
+      await axios.delete('http://localhost:3001/logout', {withCredentials: true})
+      navigate("/")
+    } catch(err){
+      console.log(err)
+    }
+  }
   return (
+
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
@@ -27,7 +37,7 @@ export default function Nav() {
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-              <Button>
+              <Button onClick={logout}>
                 LOGOUT
               </Button>
 
