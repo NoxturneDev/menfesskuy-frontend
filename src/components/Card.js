@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-export default function Card({ link }) {
+export default function Card({ link , txt, header}) {
     return (
         <Center py={6} mx={5}>
             <Box
@@ -36,7 +36,7 @@ export default function Card({ link }) {
                     <Stack direction={'row'} align={'center'} justify={'center'}>
 
                         <Text fontSize={'4xl'} fontWeight={800}>
-                            MSG BOX
+                            {header}
                         </Text>
                     </Stack>
                 </Stack>
@@ -56,7 +56,7 @@ export default function Card({ link }) {
                             _focus={{
                                 bg: 'green.500',
                             }}>
-                            Open Message Box
+                            {txt}
                         </Button>
                     </Link>
                 </Box>
