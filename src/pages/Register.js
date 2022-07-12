@@ -27,7 +27,7 @@ const Login = () => {
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
-  async function loginFunc(e) {
+  async function registerUser(e) {
     try {
       e.preventDefault()
       await axios.post('http://localhost:3001/api/users', {
@@ -66,7 +66,7 @@ const Login = () => {
           <Avatar bg="teal.500" />
           <Heading color="teal.400">Welcome</Heading>
           <Box minW={{ base: "90%", md: "468px" }}>
-            <form onSubmit={loginFunc}>
+            <form onSubmit={registerUser}>
               <Stack
                 spacing={4}
                 p="1rem"
@@ -79,7 +79,7 @@ const Login = () => {
                     <Input type="text"
                       placeholder="username" onChange={(e) => {
                         setUsername(e.target.value)
-                      }} />
+                      }} required/>
                   </InputGroup>
                 </FormControl>
                 <FormControl>
@@ -91,6 +91,7 @@ const Login = () => {
                         setPassword(e.target.value)
                       }
                       }
+                      required
                     />
                     <InputRightElement width="4.5rem">
                       <Button h="1.75rem" size="sm" onClick={handleShowClick}>
@@ -113,6 +114,7 @@ const Login = () => {
                         setConfir(e.target.value)
                       }
                       }
+                      required
                     />
                   </InputGroup>
                 </FormControl>
