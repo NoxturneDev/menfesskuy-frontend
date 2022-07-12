@@ -18,34 +18,47 @@ function Message() {
     const [msg, setMsg] = useState([])
 
     const getUserCredential = async () => {
-        const user = await axios.get('http://localhost:3001/api/token', { withCredentials: true })
-        const userToken = user.data.accessToken
-        const decoded = jwtDecode(userToken)
+        try {
+            const user = await axios.get('http://localhost:3001/api/token', { withCredentials: true })
+            const userToken = user.data.accessToken
+            const decoded = jwtDecode(userToken)
 
-        return {decoded, userToken}
+            return { decoded, userToken }
+        } catch (err) {
+            console.log(err)
+        }
+
     }
 
     const getMessage = async () => {
-        const messages = await axios.get(`http://localhost:3001/api/get/message/${user}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-        setMsg(messages.data.msg)
+        try {
+            const messages = await axios.get(`http://localhost:3001/api/get/message/${user}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            setMsg(messages.data.msg)
+        }
+        catch {
+            return null
+        }
     }
 
     useEffect(() => {
         const getData = async () => {
+            const getToken = await getUserCredential()
+            setToken(getToken.userToken)
             try {
-                const getToken = await getUserCredential()
-                
-                setToken(getToken.userToken)
                 await getMessage()
             } catch {
                 return null
             }
         }
+        // if(token !== ''){
+        //     getData()
+        // } 
         getData()
+        console.log(token)
     }, [token])
 
     return (
