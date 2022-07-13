@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import {
     Flex,
     Stack,
-    Button
+    Button,
+    Heading
 } from '@chakra-ui/react'
 function Redirect() {
     return (
@@ -15,7 +16,14 @@ function Redirect() {
                 height="100vh"
                 alignItems="center"
                 justifyContent="center"
+                flexDir="column"
+                bgGradient='linear(to-l, #7928CA, #FF0080)'
             >
+                <Heading
+                    color="green.400"
+                >
+                    MENFESS KUY (V 0.1)
+                </Heading>
                 <Flex
                     w="60%"
                     alignItems="center"
@@ -26,7 +34,7 @@ function Redirect() {
                         <Button
                             mt={10}
                             w={'full'}
-                            bg={'green.400'}
+                            bg={'#7928CA'}
                             color={'white'}
                             rounded={'xl'}
                             boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
@@ -43,7 +51,7 @@ function Redirect() {
                         <Button
                             mt={10}
                             w={'full'}
-                            bg={'green.400'}
+                            bg={'#FF0080'}
                             color={'white'}
                             rounded={'xl'}
                             boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
