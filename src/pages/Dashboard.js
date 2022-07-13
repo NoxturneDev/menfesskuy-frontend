@@ -5,7 +5,10 @@ import axios from "axios";
 import {
     Button,
     Stack,
-    Flex
+    Flex,
+    Input,
+    Box,
+    Heading
 } from "@chakra-ui/react"
 import Card from "../components/Card";
 import Nav from "../components/Navbar";
@@ -51,14 +54,40 @@ function Dashboard() {
     return (
         <>
             <Nav />
-            <h3>{link}</h3>
             <Flex
                 minWidth="100vw"
                 justifyContent="center"
                 alignItems="center"
+                flexDir="column"
             >
-                <Card link={`/message/${link}`} uniqueLink={link} />
-                <Card />
+                <Stack
+                    space={2}
+                    m={2}
+                    p={4}
+                    w="max-content"
+                >
+                    <Box
+                        px={5}
+                        py={3}
+                        maxWidth="max-content"
+                        bgColor="green.400"
+                        borderRadius="10px"
+                    >
+                        <Heading
+                            color="white"
+                        >
+                            {link}
+                        </Heading>
+
+                    </Box>
+                    <Button
+                        bgColor="green.400"
+                        color="white"
+                    >
+                        SHARE LINK
+                    </Button>
+                </Stack>
+                <Card link={`/message/${link}`} uniqueLink={link} header="open message box" txt="open" />
             </Flex>
         </>
     )
