@@ -5,7 +5,7 @@ import Message from "./pages/Message"
 import Login from "./pages/Login"
 import Register from "./pages/Register.js"
 import Redirect from "./pages/Redirect"
-
+import SendMessage from "./pages/SendMessage";
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +19,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}>
         </Route>
         <Route path="/message/:user" element={<Message />}>
+        </Route>
+        <Route path="/send/menfess/:user" element={<SendMessage />}>
         </Route>
       </Routes>
     </BrowserRouter>
