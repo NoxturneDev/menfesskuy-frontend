@@ -8,36 +8,31 @@ import {
     Flex,
     Input,
     Box,
-    Heading
+    Heading,
+    ButtonGroup
 } from "@chakra-ui/react"
 import Card from "../components/Card";
 import Nav from "../components/Navbar";
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AlertFailure, AlertSuccess } from "../components/Alert"
+import { ButtonToast } from "../components/Toast"
 
 function Dashboard() {
     const [name, setName] = useState('')
     const [link, setLink] = useState('')
-
     const navigate = useNavigate()
+    const [alert, setAlert] = useState('')
+    const [alertMsg, setAlertMsg] = useState('')
 
-    const userCredential = {
-        id: null,
-        name: null,
-        user_link: null
-    }
+    const url = `http://localhost:3000/send/menfess/${link}`
+
     const getUserCredential = async () => {
         try {
             const user = await axios.get('http://localhost:3001/api/token', { withCredentials: true })
             const token = user.data.accessToken
             const decoded = jwtDecode(token)
             const userLink = decoded.user_link
-
-
-            userCredential.id = decoded.userId
-            userCredential.name = decoded.username
-            userCredential.user_link = userLink
-
 
             setLink(userLink)
             setName(decoded.username)
@@ -51,8 +46,29 @@ function Dashboard() {
     useEffect(() => {
         getUserCredential()
     }, [])
+
+    function shareLink() {
+        if (navigator.share) {
+            console.log('ANJAY BISA')
+            navigator.share({
+                url: url
+            }).then(() => {
+                console.log('sucess')
+            }).catch(() => {
+                console.log('failed')
+            })
+        } else {
+            console.log('not supported')
+        }
+    }
+
+    function copyToClipboard() {
+        navigator.clipboard.writeText(url)
+    }
     return (
         <>
+            <AlertFailure open={alert} title="GAGAL" msg={alertMsg}></AlertFailure>
+            <AlertSuccess open={alert} title="BERHASIL" msg={alertMsg}></AlertSuccess>
             <Nav />
             <Flex
                 minWidth="100vw"
@@ -76,16 +92,27 @@ function Dashboard() {
                         <Heading
                             color="white"
                         >
-                            {link}
+                            menfess/{link}
                         </Heading>
 
                     </Box>
-                    <Button
-                        bgColor="green.400"
-                        color="white"
+                    <Flex
+                        alignItems="center"
+                        justifyContent="center"
+                        gap={3}
                     >
-                        SHARE LINK
-                    </Button>
+
+                        <ButtonGroup onClick={shareLink}
+                            w="max-content"
+                        >
+                            <ButtonToast header="Copied" msg="Link berhasil dicopy ke clipboard" status="success" btnTxt="Share Link Gan!" />
+                        </ButtonGroup>
+                        <ButtonGroup onClick={copyToClipboard}
+                            w="max-content"
+                        >
+                            <ButtonToast header="Copied" msg="Link berhasil dicopy ke clipboard" status="success" btnTxt="Copy To Clipboard" />
+                        </ButtonGroup>
+                    </Flex>
                 </Stack>
                 <Card link={`/message/${link}`} uniqueLink={link} header="open message box" txt="open" />
             </Flex>

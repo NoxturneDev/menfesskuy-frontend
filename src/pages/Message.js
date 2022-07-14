@@ -71,7 +71,7 @@ function Message() {
             >
                 {
                     msg.map(e => {
-                        return <MsgBox sender="Galih" to={name} msg={e.message} key={name} />
+                        return <MsgBox sender={e.from} to={e.to_user} msg={e.message} key={name} />
                     })
                 }
             </Flex>

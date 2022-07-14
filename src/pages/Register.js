@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
-import AlertFailure from "../components/Alert";
+import { AlertFailure } from "../components/Alert";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -79,7 +79,7 @@ const Login = () => {
                     <Input type="text"
                       placeholder="username" onChange={(e) => {
                         setUsername(e.target.value)
-                      }} required/>
+                      }} required />
                   </InputGroup>
                 </FormControl>
                 <FormControl>
