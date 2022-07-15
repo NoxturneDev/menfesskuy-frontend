@@ -2,37 +2,34 @@ import { useState } from "react";
 import {
   Flex,
   Heading,
-  Input,
   Button,
-  InputGroup,
   Stack,
   Box,
   Avatar,
-  FormControl,
   InputRightElement,
   Text
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import { AlertFailure } from "../components/Alert";
+import FormInput from "../components/Forms/FormInput"
+import Form from "../components/Forms/Form"
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
   const [msg, setMsg] = useState('')
   const [open, setOpen] = useState(false)
   const navigate = useNavigate()
 
-  const handleShowClick = () => setShowPassword(!showPassword);
+  // const handleShowClick = () => setShowPassword(!showPassword);
 
-  async function loginFunc(e) {
+  async function loginFunc() {
     try {
-      e.preventDefault()
       await axios.post('http://localhost:3001/login', {
         username: username,
         password: password,
-
       }, { withCredentials: true })
 
       navigate('/dashboard')
@@ -43,6 +40,17 @@ const Login = () => {
         console.log(msg)
         setOpen(true)
       }
+    }
+  }
+
+  const getFormsData = (a, b) => {
+    setUsername(a)
+    setPassword(b)
+    
+    try {
+      loginFunc()
+    } catch {
+      console.log("error")
     }
   }
 
@@ -66,44 +74,36 @@ const Login = () => {
           <Avatar bg="teal.500" />
           <Heading color="teal.400">Welcome</Heading>
           <Box minW={{ base: "90%", md: "468px" }}>
-            <form onSubmit={loginFunc}>
+            <Form submitFunc={getFormsData}></Form>
+            {/* <form onSubmit={loginFunc}>
               <Stack
                 spacing={4}
                 p="1rem"
                 backgroundColor="whiteAlpha.900"
                 boxShadow="md"
               >
-                <FormControl>
-                  <InputGroup>
-
-                    <Input type="text"
-                      placeholder="username" onChange={(e) => {
-                        setUsername(e.target.value)
-                      }} />
-                  </InputGroup>
-                </FormControl>
-                <FormControl>
-                  <InputGroup>
-                    <Input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Password"
-                      onChange={(e) => {
-                        setPassword(e.target.value)
-                      }
-                      }
-                    />
-                    <InputRightElement width="4.5rem">
-                      <Button h="1.75rem" size="sm" onClick={handleShowClick}>
-                        {showPassword ? "Hide" : "Show"}
-                      </Button>
-                    </InputRightElement>
-                  </InputGroup>
-                  <Stack>
-                    <Text
-                      color="red.500"
-                    >{msg}</Text>
-                  </Stack>
-                </FormControl>
+                <FormInput
+                  placeholder="username"
+                  type="text"
+                  state={setUsername}
+                >
+                </FormInput>
+                <FormInput
+                  placeholder="Password"
+                  type={showPassword}
+                  state={setPassword}
+                >
+                  <InputRightElement width="4.5rem">
+                    <Button h="1.75rem" size="sm" onClick={handleShowClick}>
+                      {showPassword ? "Hide" : "Show"}
+                    </Button>
+                  </InputRightElement>
+                </FormInput>
+                <Stack>
+                  <Text
+                    color="red.500"
+                  >{msg}</Text>
+                </Stack>
                 <Button
                   borderRadius={0}
                   type="submit"
@@ -114,7 +114,7 @@ const Login = () => {
                   Login
                 </Button>
               </Stack>
-            </form>
+            </form> */}
           </Box>
         </Stack>
       </Flex>
