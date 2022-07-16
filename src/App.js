@@ -4,7 +4,6 @@ import Dashboard from "./pages/Dashboard";
 import Message from "./pages/Message"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
-import Home from "./pages/Home"
 import SendMessage from "./pages/SendMessage";
 function App() {
   return (
