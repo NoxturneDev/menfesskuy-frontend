@@ -14,16 +14,16 @@ import {
 import Card from "../components/Card";
 import Nav from "../components/Navbar";
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AlertFailure, AlertSuccess } from "../components/Alert"
-import { ButtonToast } from "../components/Toast"
+import { useNavigate, Link } from 'react-router-dom';
+import customToast from "../components/Toast"
+import msgIcon from "../assets/msgbox.png"
+import textIcon from "../assets/msg-text.png"
+import logo from "../assets/Logo.png"
 
 function Dashboard() {
     const [name, setName] = useState('')
     const [link, setLink] = useState('')
     const navigate = useNavigate()
-    const [alert, setAlert] = useState('')
-    const [alertMsg, setAlertMsg] = useState('')
 
     const url = `http://localhost:3000/send/menfess/${link}`
 
@@ -54,6 +54,7 @@ function Dashboard() {
                 url: url
             }).then(() => {
                 console.log('sucess')
+                customToast('success', 'Berhasil', 'Link udah di share gan')
             }).catch(() => {
                 console.log('failed')
             })
@@ -64,33 +65,73 @@ function Dashboard() {
 
     function copyToClipboard() {
         navigator.clipboard.writeText(url)
+        customToast('success', 'Berhasil', 'link sudah ke copy bang')
     }
     return (
         <>
-            <AlertFailure open={alert} title="GAGAL" msg={alertMsg}></AlertFailure>
-            <AlertSuccess open={alert} title="BERHASIL" msg={alertMsg}></AlertSuccess>
             <Nav />
             <Flex
-                minWidth="100vw"
+                height="100vh"
                 justifyContent="center"
                 alignItems="center"
                 flexDir="column"
+                bgGradient='linear(to-l, #7928CA, #FF0080)'
+                overflow="hidden"
+                _before={{
+                    content: '" "',
+                    bgImage: `"${logo}"`,
+                    bgPosition: "center",
+                    opacity: "0.3",
+                    position: "absolute",
+                    h:"90%",
+                    left: "0",
+                    right: "0",
+                    bottom: "0",
+                    
+                }}
             >
+                <Flex
+                    w="sm"
+                    h="sm"
+                    bg="gray.800"
+                    boxShadow="lg"
+                    rounded="md"
+                    p={[4, 5]}
+                    justifyContent="center"
+                    alignItems="center"
+                    zIndex="base"
+
+                >
+                    <Stack
+                        align="center"
+                        textAlign="center"
+                    >
+                        <Box mb={[4, 9]} maxW="sm" w="full">
+                            <img src={textIcon} alt="text-icon" />
+                        </Box>
+                        <Link to={`/message/${link}`}>
+                            <img src={msgIcon} alt="msg-icon" />
+                        </Link>
+                    </Stack>
+                </Flex>
+
+                {/* LINK BOX CONTAINER */}
                 <Stack
                     space={2}
                     m={2}
                     p={4}
                     w="max-content"
+                    zIndex="base"
                 >
                     <Box
                         px={5}
                         py={3}
                         maxWidth="max-content"
-                        bgColor="green.400"
+                        bgColor="gray.800"
                         borderRadius="10px"
                     >
                         <Heading
-                            color="white"
+                            color="light.500"
                         >
                             menfess/{link}
                         </Heading>
@@ -105,16 +146,24 @@ function Dashboard() {
                         <ButtonGroup onClick={shareLink}
                             w="max-content"
                         >
-                            <ButtonToast header="Copied" msg="Link berhasil dicopy ke clipboard" status="success" btnTxt="Share Link Gan!" />
+                            <Button
+                                bg="gray.800"
+                                color="gray.200"
+                                _hover={{ color: "dark.500" }}
+                            >Share Link gan</Button>
                         </ButtonGroup>
                         <ButtonGroup onClick={copyToClipboard}
                             w="max-content"
                         >
-                            <ButtonToast header="Copied" msg="Link berhasil dicopy ke clipboard" status="success" btnTxt="Copy To Clipboard" />
+                            <Button
+                                bg="dark.500"
+                                color="gray.200"
+                                _hover={{ color: "gray.800" }}
+                            >Copy to clipboard</Button>
                         </ButtonGroup>
                     </Flex>
+
                 </Stack>
-                <Card link={`/message/${link}`} uniqueLink={link} header="open message box" txt="open" />
             </Flex>
         </>
     )

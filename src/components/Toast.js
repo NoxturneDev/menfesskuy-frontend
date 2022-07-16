@@ -1,28 +1,18 @@
 import {
-    useToast,
-    Button
+    createStandaloneToast
 } from "@chakra-ui/react"
 import React from "react"
 
-export const ButtonToast = ({ status, header, msg, btnTxt }) => {
-    const toast = useToast()
-    const showToast = () => {
-        toast({
-            title: header,
-            description: msg,
-            status: status,
-            duration: 5000
-        })
-    }
-    return (
-        <Button
-            bgColor="green.400"
-            color="white"
-            onClick={() =>
-                showToast()
-            }
-        >
-            {btnTxt}
-        </Button>
-    )
+const { toast } = createStandaloneToast()
+
+function customToast(status, title, msg) {
+    toast({
+        title: title,
+        description: msg,
+        status: status,
+        duration: 9000,
+        isClosable: true,
+    })
 }
+
+export default customToast

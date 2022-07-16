@@ -31,7 +31,7 @@ export default function Nav() {
   }
   return (
     <>
-      <Box bg={useColorModeValue('green.400', 'green.400')} px={4}>
+      <Box bg="gray.800" px={4} zIndex="sticky">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Link to="/dashboard">
             <Heading as="h4" color="white" fontSize="2xl">
@@ -43,9 +43,9 @@ export default function Nav() {
             <Stack direction={'row'} spacing={7}>
               <Button
                 onClick={logout}
-                bgColor="green.600"
+                bgColor="dark.500"
                 color="white"
-                _hover={{ color : "green.700", bgColor : "green.200"}}
+                _hover={{ color : "light.500", bgColor : "dark.900"}}
               >
                 LOGOUT
               </Button>
@@ -76,7 +76,9 @@ export default function Nav() {
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem>Logout</MenuItem>
+                  <MenuItem
+                    bg="dark.500"
+                  >Logout</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>
