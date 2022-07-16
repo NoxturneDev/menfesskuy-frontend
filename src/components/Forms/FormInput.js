@@ -11,7 +11,7 @@ function FormInput({ placeholder, state, type, children}) {
         <>
             <FormControl 
             w={{base: "100%"}}
-            my={[4, 2]}
+            my={[5, 4]}
             >
                 <InputGroup>
                     <Input

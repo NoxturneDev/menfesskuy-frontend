@@ -1,139 +1,73 @@
-import { useState } from "react";
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import {
-  Flex,
-  Heading,
-  Input,
-  Button,
-  InputGroup,
-  Stack,
-  Box,
-  Avatar,
-  FormControl,
-  InputRightElement,
-  Text
-} from "@chakra-ui/react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom"
-import { AlertFailure } from "../components/Alert";
+    Flex,
+    Stack,
+    Box,
+    Center,
+    Text,
+    Heading
+} from '@chakra-ui/react'
+import Logo from "../assets/Logo.png"
+import RegisterForm from "./RegisterForm"
 
-const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('')
-  const [username, setUsername] = useState('')
-  const [confirPass, setConfir] = useState('')
-  const [msg, setMsg] = useState('')
-  const [open, setOpen] = useState(false)
-  const navigate = useNavigate()
+function Login() {
+    return (
+        <>
+            {/* CONTAINER */}
+            <Flex
+                minWidth="100vw"
+                bgColor="gray.200"
+                height="100vh"
+                alignItems="center"
+                justifyContent="center"
+                flexDir="column"
+                bgGradient='linear(to-l, #7928CA, #FF0080)'
+            >
+                <Center py={6} mx={[3, 4]}>
+                    {/* FORMS CARD */}
+                    <Box
+                        maxWidth="500px"
+                        w={'full'}
+                        bg="gray.800"
+                        boxShadow={'2xl'}
+                        rounded={'md'}
+                        overflow={'hidden'}
+                        py={{ sm: 1, md: 4 }}
+                    >
 
-  const handleShowClick = () => setShowPassword(!showPassword);
+                        <Stack
+                            textAlign={'center'}
+                            py={[8, 6]}
+                            px={[2, 4]}
+                            align={'center'}>
 
-  async function registerUser(e) {
-    try {
-      e.preventDefault()
-      await axios.post('http://localhost:3001/api/users', {
-        username: username,
-        password: password,
-        confirmationPass: confirPass
-      }, { withCredentials: true })
+                            {/* IMG CONTAINER */}
+                            <Box
+                                maxW="80%"
+                                padding={2}
+                                mb={[8, 4]}
+                            >
+                                <img src={Logo} alt="logo" w="90%" />
+                            </Box>
+                            <Stack
+                                direction={'column'}
+                                align={'center'}
+                                justify={'center'}
+                                width="90%"
+                            >
+                                {/* FORMS COMPONENT */}
+                                <Heading fontSize={["lg", "2xl"]} color="gray.500">
+                                    YUK GAN REGIS DULU
+                                </Heading>
+                                <RegisterForm />
+                            </Stack>
+                        </Stack>
+                    </Box>
+                </Center>
+            </Flex>
+        </>
+    )
+}
 
-      navigate('/')
-    } catch (err) {
-      if (err.response) {
-        setMsg(err.response.data.msg)
-        console.log(msg)
-        setOpen(true)
-      }
-    }
-  }
-
-  return (
-    <>
-      <AlertFailure open={open} title="FAILURE!" msg={msg} />
-      <Flex
-        flexDirection="column"
-        width="100wh"
-        height="100vh"
-        backgroundColor="gray.100"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Stack
-          flexDir="column"
-          mb="2"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Avatar bg="teal.500" />
-          <Heading color="teal.400">Welcome</Heading>
-          <Box minW={{ base: "90%", md: "468px" }}>
-            <form onSubmit={registerUser}>
-              <Stack
-                spacing={4}
-                p="1rem"
-                backgroundColor="whiteAlpha.900"
-                boxShadow="md"
-              >
-                <FormControl>
-                  <InputGroup>
-
-                    <Input type="text"
-                      placeholder="username" onChange={(e) => {
-                        setUsername(e.target.value)
-                      }} required />
-                  </InputGroup>
-                </FormControl>
-                <FormControl>
-                  <InputGroup>
-                    <Input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Password"
-                      onChange={(e) => {
-                        setPassword(e.target.value)
-                      }
-                      }
-                      required
-                    />
-                    <InputRightElement width="4.5rem">
-                      <Button h="1.75rem" size="sm" onClick={handleShowClick}>
-                        {showPassword ? "Hide" : "Show"}
-                      </Button>
-                    </InputRightElement>
-                  </InputGroup>
-                  <Stack>
-                    <Text
-                      color="red.500"
-                    >{msg}</Text>
-                  </Stack>
-                </FormControl>
-                <FormControl>
-                  <InputGroup>
-                    <Input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Confir Password"
-                      onChange={(e) => {
-                        setConfir(e.target.value)
-                      }
-                      }
-                      required
-                    />
-                  </InputGroup>
-                </FormControl>
-                <Button
-                  borderRadius={0}
-                  type="submit"
-                  variant="solid"
-                  colorScheme="teal"
-                  width="full"
-                >
-                  Register
-                </Button>
-              </Stack>
-            </form>
-          </Box>
-        </Stack>
-      </Flex>
-    </>
-  );
-};
-
-export default Login;
+export default Login
