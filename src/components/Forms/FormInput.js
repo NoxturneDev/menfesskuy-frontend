@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import {
     Input,
     InputGroup,
@@ -9,7 +9,10 @@ import {
 function FormInput({ placeholder, state, type, children}) {
     return (
         <>
-            <FormControl>
+            <FormControl 
+            w={{base: "100%"}}
+            my={[4, 2]}
+            >
                 <InputGroup>
                     <Input
                         type={type ? "text" : "password"}
@@ -18,6 +21,12 @@ function FormInput({ placeholder, state, type, children}) {
                             state(e.target.value)
                         }
                         }
+                        focusBorderColor="dark.900"
+                        borderColor="gray.700"
+                        color="gray.400"
+                        fontWeight="semibold"
+                        fontSize={["sm", "md"]}
+                        required
                     />
                     {children}
                 </InputGroup>

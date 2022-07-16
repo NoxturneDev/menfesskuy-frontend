@@ -3,16 +3,14 @@ import { Routes, Route, BrowserRouter } from "react-router-dom"
 import Dashboard from "./pages/Dashboard";
 import Message from "./pages/Message"
 import Login from "./pages/Login"
-import Register from "./pages/Register.js"
-import Redirect from "./pages/Redirect"
+import Register from "./pages/Register"
+import Home from "./pages/Home"
 import SendMessage from "./pages/SendMessage";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Redirect />}>
-        </Route>
-        <Route path="/login" element={<Login />}>
+        <Route path="/" element={<Login />}>
         </Route>
         <Route path="/register" element={<Register />}>
         </Route>

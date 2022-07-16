@@ -1,125 +1,83 @@
-import { useState } from "react";
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import {
-  Flex,
-  Heading,
-  Button,
-  Stack,
-  Box,
-  Avatar,
-  InputRightElement,
-  Text
-} from "@chakra-ui/react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom"
-import { AlertFailure } from "../components/Alert";
-import FormInput from "../components/Forms/FormInput"
-import Form from "../components/Forms/Form"
+    Flex,
+    Stack,
+    Button,
+    Box,
+    Center,
+    Text,
+    Heading
+} from '@chakra-ui/react'
+import Logo from "../assets/Logo.png"
+import LoginForm from "./LoginForm"
 
-const Login = () => {
-  // const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('')
-  const [username, setUsername] = useState('')
-  const [msg, setMsg] = useState('')
-  const [open, setOpen] = useState(false)
-  const navigate = useNavigate()
+function Login() {
+    return (
+        <>
+            {/* CONTAINER */}
+            <Flex
+                minWidth="100vw"
+                bgColor="gray.200"
+                height="100vh"
+                alignItems="center"
+                justifyContent="center"
+                flexDir="column"
+                bgGradient='linear(to-l, #7928CA, #FF0080)'
+            >
+                <Center py={6} mx={[3, 4]}>
+                    {/* FORMS CARD */}
+                    <Box
+                        maxWidth="500px"
+                        w={'full'}
+                        bg="gray.800"
+                        boxShadow={'2xl'}
+                        rounded={'md'}
+                        overflow={'hidden'}
+                        py={{ sm: 1, md: 4 }}
+                    >
 
-  // const handleShowClick = () => setShowPassword(!showPassword);
+                        <Stack
+                            textAlign={'center'}
+                            py={[8, 6]}
+                            px={[2, 4]}
+                            align={'center'}>
 
-  async function loginFunc() {
-    try {
-      await axios.post('http://localhost:3001/login', {
-        username: username,
-        password: password,
-      }, { withCredentials: true })
+                            {/* IMG CONTAINER */}
+                            <Box
+                                maxW="80%"
+                                padding={2}
+                                mb={[8, 4]}
+                            >
+                                <img src={Logo} alt="logo" w="90%" />
+                            </Box>
+                            <Stack
+                                direction={'column'}
+                                align={'center'}
+                                justify={'center'}
+                                width="90%"
+                            >
+                                {/* FORMS COMPONENT */}
+                                <Heading fontSize={["lg", "2xl"]} color="gray.500">
+                                    LOGIN DULU GAN
+                                </Heading>
+                                <LoginForm />
+                            </Stack>
 
-      navigate('/dashboard')
-      console.log('berhasil login')
-    } catch (err) {
-      if (err.response) {
-        setMsg(err.response.data.msg)
-        console.log(msg)
-        setOpen(true)
-      }
-    }
-  }
+                            {/* REDIRECT TO REGISTER PAGE */}
+                            <Link to="/register">
+                                <Text color="gray.400"
+                                    fontSize={["md", "lg"]}
+                                >
+                                    Don't have an account?
+                                </Text>
+                            </Link>
+                        </Stack>
+                    </Box>
+                </Center>
+            </Flex>
+        </>
+    )
+}
 
-  const getFormsData = (a, b) => {
-    setUsername(a)
-    setPassword(b)
-    
-    try {
-      loginFunc()
-    } catch {
-      console.log("error")
-    }
-  }
-
-  return (
-    <>
-      <AlertFailure open={open} title="FAILURE!" msg={msg} />
-      <Flex
-        flexDirection="column"
-        width="100wh"
-        height="100vh"
-        backgroundColor="gray.100"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Stack
-          flexDir="column"
-          mb="2"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Avatar bg="teal.500" />
-          <Heading color="teal.400">Welcome</Heading>
-          <Box minW={{ base: "90%", md: "468px" }}>
-            <Form submitFunc={getFormsData}></Form>
-            {/* <form onSubmit={loginFunc}>
-              <Stack
-                spacing={4}
-                p="1rem"
-                backgroundColor="whiteAlpha.900"
-                boxShadow="md"
-              >
-                <FormInput
-                  placeholder="username"
-                  type="text"
-                  state={setUsername}
-                >
-                </FormInput>
-                <FormInput
-                  placeholder="Password"
-                  type={showPassword}
-                  state={setPassword}
-                >
-                  <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm" onClick={handleShowClick}>
-                      {showPassword ? "Hide" : "Show"}
-                    </Button>
-                  </InputRightElement>
-                </FormInput>
-                <Stack>
-                  <Text
-                    color="red.500"
-                  >{msg}</Text>
-                </Stack>
-                <Button
-                  borderRadius={0}
-                  type="submit"
-                  variant="solid"
-                  colorScheme="teal"
-                  width="full"
-                >
-                  Login
-                </Button>
-              </Stack>
-            </form> */}
-          </Box>
-        </Stack>
-      </Flex>
-    </>
-  );
-};
-
-export default Login;
+export default Login
