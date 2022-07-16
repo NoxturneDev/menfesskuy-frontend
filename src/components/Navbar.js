@@ -18,6 +18,7 @@ import {
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import logo from "../assets/Logo.png"
 
 export default function Nav() {
   const navigate = useNavigate()
@@ -33,10 +34,8 @@ export default function Nav() {
     <>
       <Box bg="gray.800" px={4} zIndex="sticky">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Link to="/dashboard">
-            <Heading as="h4" color="white" fontSize="2xl">
-              Menfess Kuy
-            </Heading>
+          <Link to="/dashboard" width="5rem">
+           <img src={logo} alt="" maxW="5rem"/>
           </Link>
 
           <Flex alignItems={'center'}>
