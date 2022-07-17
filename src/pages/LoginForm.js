@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import {
   Button,
   Stack,
-  InputRightElement,
-  Text,
-  useToast,
-  createStandaloneToast
+  InputRightElement
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import FormInput from "../components/Forms/FormInput"
+import customToast from "../components/Toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +15,7 @@ const Login = () => {
   const [username, setUsername] = useState('')
   const [msg, setMsg] = useState('')
   const navigate = useNavigate()
-  const { toast } = createStandaloneToast()
+  
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -28,7 +26,7 @@ const Login = () => {
         username: username,
         password: password,
       }, { withCredentials: true })
-      console.log('berhasil login')
+
       navigate('/dashboard')
     } catch (err) {
       if (err.response) {
@@ -37,20 +35,10 @@ const Login = () => {
     }
   }
 
-  const customToast = (msg, status) => {
-    toast({
-      title: 'An error occurred.',
-      description: msg,
-      status: status,
-      duration: 9000,
-      isClosable: true,
-    })
-  }
-
   useEffect(() => {
     // IF THERE'S ERROR, INVOKE THE TOAST
     if (msg !== '') {
-      customToast(msg, 'error')
+      customToast('error', msg)
     }
   }, [msg])
 

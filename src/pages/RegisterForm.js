@@ -3,13 +3,13 @@ import {
   Button,
   Stack,
   InputRightElement,
-  ButtonGroup,
-  createStandaloneToast
+  ButtonGroup
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom"
-import { AlertFailure } from "../components/Alert";
 import FormInput from "../components/Forms/FormInput"
+import customToast from "../components/Toast";
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,9 +17,7 @@ const Login = () => {
   const [username, setUsername] = useState('')
   const [confirPass, setConfir] = useState('')
   const [msg, setMsg] = useState('')
-  const [status, setStatus] = useState('')
   const navigate = useNavigate()
-  const { toast } = createStandaloneToast()
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -31,7 +29,7 @@ const Login = () => {
         password: password,
         confirmationPass: confirPass
       }, { withCredentials: true })
-      customToast('Berhasil', 'Akun berhasil dibuat, kembali ke halaman login...', 'success')
+      customToast('success', 'Akun berhasil dibuat, kembali ke halaman login...')
       setTimeout(() => {
         navigate('/')
       }, 4000)
@@ -42,22 +40,13 @@ const Login = () => {
     }
   }
 
-  const customToast = (title, msg, status,) => {
-    toast({
-      title: title,
-      description: msg,
-      status: status,
-      duration: 4000,
-      isClosable: true,
-    })
-  }
-
   useEffect(() => {
     // IF THERE'S ERROR, INVOKE THE TOAST
     if (msg !== '') {
-      customToast('Error', msg, 'error')
+      customToast('error', msg)
     }
   }, [msg])
+
 
   return (
     <>
