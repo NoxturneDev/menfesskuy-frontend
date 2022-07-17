@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import {
     Flex,
     Stack,
     Box,
     Center,
-    Text,
     Heading
 } from '@chakra-ui/react'
 import Logo from "../../assets/Logo.png"

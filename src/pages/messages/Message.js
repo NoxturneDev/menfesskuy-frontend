@@ -1,9 +1,5 @@
 import React, { useState } from 'react'
-import jwtDecode from "jwt-decode";
-import axios from "axios";
 import {
-    Button,
-    Box,
     Flex
 } from "@chakra-ui/react"
 import MsgBox from "../../components/MsgBox";
