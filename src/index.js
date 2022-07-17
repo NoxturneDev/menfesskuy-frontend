@@ -7,6 +7,6 @@ import "./theme/style.css"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ChakraProvider theme={theme}>
-  <App />
-</ChakraProvider>
+    <App />
+  </ChakraProvider>
 );

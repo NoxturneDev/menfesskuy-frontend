@@ -81,17 +81,19 @@ function Dashboard() {
                     content: '" "',
                     bgImage: `"${logo}"`,
                     bgPosition: "center",
+                    bgRepeat: "no-repeat",
                     opacity: "0.3",
                     position: "absolute",
                     h:"90%",
                     left: "0",
                     right: "0",
                     bottom: "0",
-                    
+                    zIndex: "base"
                 }}
             >
+                {/* CARDS */}
                 <Flex
-                    w="sm"
+                    w={["xs", "sm"]}
                     h="sm"
                     bg="gray.800"
                     boxShadow="lg"
@@ -118,20 +120,25 @@ function Dashboard() {
                 {/* LINK BOX CONTAINER */}
                 <Stack
                     space={2}
-                    m={2}
+                    m={[1, 2]}
                     p={4}
-                    w="max-content"
+                    w={["xs", "sm"]}
                     zIndex="base"
+                    align="center"
+                    bg="gray.800"
+                    rounded="md"
+                    mt={[4, 6]}
                 >
                     <Box
                         px={5}
                         py={3}
                         maxWidth="max-content"
-                        bgColor="gray.800"
+                        bgColor="dark.500"
                         borderRadius="10px"
+                        mb={[2, 4]}
                     >
                         <Heading
-                            color="light.500"
+                            color="gray.200"
                         >
                             menfess/{link}
                         </Heading>
@@ -140,7 +147,8 @@ function Dashboard() {
                     <Flex
                         alignItems="center"
                         justifyContent="center"
-                        gap={3}
+                        gap={[3]}
+                        flexDir={['column', 'row']}
                     >
 
                         <ButtonGroup onClick={shareLink}
