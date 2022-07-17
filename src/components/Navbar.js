@@ -15,10 +15,9 @@ import {
   Center,
   Heading
 } from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from "../assets/Logo.png"
+import logo from "../assets/logo-text.png"
 
 export default function Nav() {
   const navigate = useNavigate()
@@ -34,18 +33,21 @@ export default function Nav() {
     <>
       <Box bg="gray.800" px={4} zIndex="sticky">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Link to="/dashboard" width="5rem">
-           <img src={logo} alt="" maxW="5rem"/>
-          </Link>
-
+          <Box w="10rem">
+            <Link to="/dashboard">
+              <img src={logo} alt="" />
+            </Link>
+          </Box>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
               <Button
                 onClick={logout}
                 bgColor="dark.500"
                 color="white"
-                _hover={{ color : "light.500", bgColor : "dark.900"}}
+                _hover={{ color: "light.500", bgColor: "dark.900" }}
+                display={["none", "flex"]}
               >
+
                 LOGOUT
               </Button>
 
@@ -55,7 +57,8 @@ export default function Nav() {
                   rounded={'full'}
                   variant={'link'}
                   cursor={'pointer'}
-                  minW={0}>
+                  minW={0}
+                  display={["flex", "none"]}>
                   <Avatar
                     size={'sm'}
                     src={'https://avatars.dicebear.com/api/male/username.svg'}
