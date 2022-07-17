@@ -15,7 +15,26 @@ const theme = extendTheme({
   },
   fonts:{
     body: `Poppins, ${base.fonts?.body}`
+  },
+  components: {
+    Alert: {
+      variants: {
+        subtle: (props) => { // only applies to `subtle` variant
+          const { colorScheme: c } = props
+          if (c !== "blue") {
+            // use original definition for all color schemes except "blue"
+            return base.components.Alert.variants.subtle(props)
+          }
+          return {
+            container: {
+              bg: `${c}.500`, // or literal color, e.g. "#0984ff"
+            },
+          }
+        }
+      }
+    }
   }
 })
+
 
 export default theme

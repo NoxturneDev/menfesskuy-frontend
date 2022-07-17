@@ -18,7 +18,7 @@ function MsgBox({ sender, msg }) {
       margin={2}
       bg="gray.800"
       maxW="xs"
-      zIndex="sticky"
+      zIndex="1"
     >
       <Stack
         overflow="clip"

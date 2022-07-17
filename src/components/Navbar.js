@@ -64,7 +64,7 @@ export default function Nav() {
                     src={'https://avatars.dicebear.com/api/male/username.svg'}
                   />
                 </MenuButton>
-                <MenuList alignItems={'center'}>
+                <MenuList alignItems={'center'} zIndex="sticky" bg="gray.800" color="gray.200">
                   <br />
                   <Center>
                     <Avatar
@@ -79,7 +79,8 @@ export default function Nav() {
                   <br />
                   <MenuDivider />
                   <MenuItem
-                    bg="dark.500"
+                    bg="gray.800"
+                    onClick={logout}
                   >Logout</MenuItem>
                 </MenuList>
               </Menu>
