@@ -1,97 +1,83 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import {
     Flex,
-    Heading,
-    Input,
-    Button,
-    InputGroup,
     Stack,
+    Button,
     Box,
-    Avatar,
-    FormControl,
-    InputRightElement,
-    Text
-} from "@chakra-ui/react";
-function SendMessage() {
-    const { user } = useParams()
-    const [msg, setMsg] = useState('')
-    const [from, setFrom] = useState('')
-    const [toUser, setToUser] = useState('')
+    Center,
+    Text,
+    Heading
+} from '@chakra-ui/react'
+import Logo from "../assets/Logo.png"
+import SendMsgForm from "./SendMsgForm"
 
-
-    const sendMessage = async (e) => {
-        e.preventDefault()
-        try {
-            const send = await axios.post(`http://localhost:3001/api/send/message/${user}`, {
-                from: from,
-                message: msg
-            })
-
-            console.log(send.data.msg)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+function Login() {
     return (
         <>
+            {/* CONTAINER */}
             <Flex
-                flexDirection="column"
-                width="100wh"
+                minWidth="100vw"
+                bgColor="gray.200"
                 height="100vh"
-                backgroundColor="gray.100"
-                justifyContent="center"
                 alignItems="center"
+                justifyContent="center"
+                flexDir="column"
+                bgGradient='linear(to-l, #7928CA, #FF0080)'
             >
-                <Stack
-                    flexDir="column"
-                    mb="2"
-                    justifyContent="center"
-                    alignItems="center"
-                >
-                    <Avatar bg="teal.500" />
-                    <Heading color="teal.400">Send ur Message to {user}</Heading>
-                    <Box minW={{ base: "90%", md: "468px" }}>
-                        <form onSubmit={sendMessage}>
-                            <Stack
-                                spacing={4}
-                                p="1rem"
-                                backgroundColor="whiteAlpha.900"
-                                boxShadow="md"
+                <Center py={6} mx={[3, 4]}>
+                    {/* FORMS CARD */}
+                    <Box
+                        maxWidth="500px"
+                        w={'full'}
+                        bg="gray.800"
+                        boxShadow={'2xl'}
+                        rounded={'md'}
+                        overflow={'hidden'}
+                        py={{ sm: 1, md: 4 }}
+                    >
+
+                        <Stack
+                            textAlign={'center'}
+                            py={[8, 6]}
+                            px={[2, 4]}
+                            align={'center'}>
+
+                            {/* IMG CONTAINER */}
+                            <Box
+                                maxW="80%"
+                                padding={2}
+                                mb={[8, 4]}
                             >
-                                <FormControl>
-                                    <InputGroup>
-                                        <Input type="text"
-                                            placeholder="from" onChange={(e) => {
-                                                setFrom(e.target.value)
-                                            }} />
-                                    </InputGroup>
-                                </FormControl>
-                                <FormControl>
-                                    <InputGroup>
-                                        <Input type="text"
-                                            placeholder="msg" onChange={(e) => {
-                                                setMsg(e.target.value)
-                                            }} />
-                                    </InputGroup>
-                                </FormControl>
-                                <Button
-                                    borderRadius={0}
-                                    type="submit"
-                                    variant="solid"
-                                    colorScheme="teal"
-                                    width="full"
-                                >
-                                    Send Messages!
-                                </Button>
+                                <img src={Logo} alt="logo" w="90%" />
+                            </Box>
+                            <Stack
+                                direction={'column'}
+                                align={'center'}
+                                justify={'center'}
+                                width="90%"
+                            >
+                                {/* FORMS COMPONENT */}
+                                <Heading fontSize={["lg", "2xl"]} color="gray.500">
+                                    Isi pesan rahasiamu
+                                </Heading>
+                                <SendMsgForm />
                             </Stack>
-                        </form>
+
+                            {/* REDIRECT TO REGISTER PAGE */}
+                            <Link to="/register">
+                                <Text color="gray.400"
+                                    fontSize={["md", "lg"]}
+                                >
+                                    Pengen punya akun juga?
+                                </Text>
+                            </Link>
+                        </Stack>
                     </Box>
-                </Stack>
+                </Center>
             </Flex>
         </>
     )
 }
 
-export default SendMessage
+export default Login

@@ -26,7 +26,7 @@ function FormInput({ placeholder, state, type, children}) {
                         color="gray.400"
                         fontWeight="semibold"
                         fontSize={["sm", "md"]}
-                        required
+                        isRequired
                     />
                     {children}
                 </InputGroup>
