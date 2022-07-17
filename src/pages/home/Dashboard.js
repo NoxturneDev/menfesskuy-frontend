@@ -17,7 +17,7 @@ import customToast from "../../components/Toast"
 import msgIcon from "../../assets/msgbox.png"
 import textIcon from "../../assets/msg-text.png"
 import logo from "../../assets/Logo.png"
-import { userCredential } from "../../data/data";
+import { userCredential } from "../../api/data";
 
 function Dashboard() {
     const [name, setName] = useState('')

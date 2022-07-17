@@ -11,7 +11,7 @@ import Nav from "../../components/Navbar";
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import logo from "../../assets/Logo.png"
-import { getMessage } from '../../data/data';
+import { getMessage } from '../../api/data';
 
 function Message() {
     const [name, setName] = useState('')
