@@ -6,11 +6,29 @@ export const getUserCredential = async () => {
         const user = await axios.get('http://localhost:3001/api/token', { withCredentials: true })
         const token = user.data.accessToken
         const decoded = jwtDecode(token)
-        
-        return decoded
+
+        return { token, decoded }
     } catch (err) {
         if (err) {
-            return {}
+            throw err
         }
     }
 }
+
+export const getUserMessage = async (user) => {
+    const getToken = await getUserCredential()
+    const token = getToken.token
+    try {
+        const messages = await axios.get(`http://localhost:3001/api/get/message/${user}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        return messages
+    }
+    catch {
+        return null
+    }
+}
+

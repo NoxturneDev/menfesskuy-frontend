@@ -5,6 +5,7 @@ import Message from "./pages/messages/Message"
 import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 import SendMessage from "./pages/messages/SendMessage";
+
 function App() {
   return (
     <BrowserRouter>

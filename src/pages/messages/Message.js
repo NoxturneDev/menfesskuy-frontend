@@ -11,57 +11,26 @@ import Nav from "../../components/Navbar";
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import logo from "../../assets/Logo.png"
-
+import { getMessage } from '../../data/data';
 
 function Message() {
     const [name, setName] = useState('')
     const { user } = useParams()
-    const [token, setToken] = useState('')
     const [msg, setMsg] = useState([])
 
-    const getUserCredential = async () => {
+    const messages = async () => {
         try {
-            const user = await axios.get('http://localhost:3001/api/token', { withCredentials: true })
-            const userToken = user.data.accessToken
-            const decoded = jwtDecode(userToken)
-
-            return { decoded, userToken }
+            const data = await getMessage(user)
+            setMsg(data)
         } catch (err) {
-            console.log(err)
-        }
-
-    }
-
-    const getMessage = async () => {
-        try {
-            const messages = await axios.get(`http://localhost:3001/api/get/message/${user}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            setMsg(messages.data.msg)
-        }
-        catch {
-            return null
+            throw err
         }
     }
+
 
     useEffect(() => {
-        const getData = async () => {
-            const getToken = await getUserCredential()
-            setToken(getToken.userToken)
-            try {
-                await getMessage()
-            } catch {
-                return null
-            }
-        }
-        // if(token !== ''){
-        //     getData()
-        // } 
-        getData()
-        console.log(token)
-    }, [token])
+        messages()
+    }, [])
 
     return (
         <>

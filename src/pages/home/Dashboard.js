@@ -17,7 +17,7 @@ import customToast from "../../components/Toast"
 import msgIcon from "../../assets/msgbox.png"
 import textIcon from "../../assets/msg-text.png"
 import logo from "../../assets/Logo.png"
-import { getUserCredential } from '../../data/dataFetch';
+import { userCredential } from "../../data/data";
 
 function Dashboard() {
     const [name, setName] = useState('')
@@ -25,17 +25,22 @@ function Dashboard() {
     const navigate = useNavigate()
     const url = `http://localhost:3000/send/menfess/${link}`
 
-    const userCredential = async () => {
-        try{
-           const data =  await getUserCredential()
-           console.log(data)
-        } catch(err){
-            console.log(err)
+    const userData = async () => {
+        try {
+            const user = await userCredential()
+            const { username, user_link } = user.decoded
+        
+            setLink(user_link)
+            setName(username)
+        } catch (err) {
+            if(err){
+                navigate('/')
+            }
         }
     }
 
     useEffect(() => {
-        userCredential()
+        userData()
     }, [])
 
     function shareLink() {
