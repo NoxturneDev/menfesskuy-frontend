@@ -6,45 +6,36 @@ import {
     Button,
     Stack,
     Flex,
-    Input,
     Box,
     Heading,
     ButtonGroup
 } from "@chakra-ui/react"
-import Card from "../components/Card";
-import Nav from "../components/Navbar";
+import Nav from "../../components/Navbar";
 import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import customToast from "../components/Toast"
-import msgIcon from "../assets/msgbox.png"
-import textIcon from "../assets/msg-text.png"
-import logo from "../assets/Logo.png"
+import customToast from "../../components/Toast"
+import msgIcon from "../../assets/msgbox.png"
+import textIcon from "../../assets/msg-text.png"
+import logo from "../../assets/Logo.png"
+import { getUserCredential } from '../../data/dataFetch';
 
 function Dashboard() {
     const [name, setName] = useState('')
     const [link, setLink] = useState('')
     const navigate = useNavigate()
-
     const url = `http://localhost:3000/send/menfess/${link}`
 
-    const getUserCredential = async () => {
-        try {
-            const user = await axios.get('http://localhost:3001/api/token', { withCredentials: true })
-            const token = user.data.accessToken
-            const decoded = jwtDecode(token)
-            const userLink = decoded.user_link
-
-            setLink(userLink)
-            setName(decoded.username)
-        } catch (err) {
-            if (err) {
-                navigate("/")
-            }
+    const userCredential = async () => {
+        try{
+           const data =  await getUserCredential()
+           console.log(data)
+        } catch(err){
+            console.log(err)
         }
     }
 
     useEffect(() => {
-        getUserCredential()
+        userCredential()
     }, [])
 
     function shareLink() {
@@ -84,7 +75,7 @@ function Dashboard() {
                     bgRepeat: "no-repeat",
                     opacity: "0.3",
                     position: "absolute",
-                    h:"90%",
+                    h: "90%",
                     left: "0",
                     right: "0",
                     bottom: "0",

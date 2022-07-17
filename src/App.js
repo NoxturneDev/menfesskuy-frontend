@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom"
-import Dashboard from "./pages/Dashboard";
-import Message from "./pages/Message"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
-import SendMessage from "./pages/SendMessage";
+import Dashboard from "./pages/home/Dashboard";
+import Message from "./pages/messages/Message"
+import Login from "./pages/login/Login"
+import Register from "./pages/register/Register"
+import SendMessage from "./pages/messages/SendMessage";
 function App() {
   return (
     <BrowserRouter>

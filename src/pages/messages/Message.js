@@ -6,11 +6,11 @@ import {
     Box,
     Flex
 } from "@chakra-ui/react"
-import MsgBox from "../components/MsgBox";
-import Nav from "../components/Navbar";
+import MsgBox from "../../components/MsgBox";
+import Nav from "../../components/Navbar";
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import logo from "../assets/Logo.png"
+import logo from "../../assets/Logo.png"
 
 
 function Message() {

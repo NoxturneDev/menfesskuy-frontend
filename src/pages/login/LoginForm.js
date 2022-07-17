@@ -6,8 +6,8 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
-import FormInput from "../components/Forms/FormInput"
-import customToast from "../components/Toast";
+import FormInput from "../../components/Forms/FormInput"
+import customToast from "../../components/Toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +26,6 @@ const Login = () => {
         username: username,
         password: password,
       }, { withCredentials: true })
-
       navigate('/dashboard')
     } catch (err) {
       if (err.response) {

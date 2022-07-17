@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom'
 import {
     Flex,
     Stack,
-    Button,
     Box,
     Center,
     Text,
     Heading
 } from '@chakra-ui/react'
-import Logo from "../assets/Logo.png"
-import SendMsgForm from "./SendMsgForm"
+import Logo from "../../assets/Logo.png"
+import RegisterForm from "./RegisterForm"
 
 function Login() {
     return (
@@ -59,19 +58,10 @@ function Login() {
                             >
                                 {/* FORMS COMPONENT */}
                                 <Heading fontSize={["lg", "2xl"]} color="gray.500">
-                                    Isi pesan rahasiamu
+                                    YUK GAN REGIS DULU
                                 </Heading>
-                                <SendMsgForm />
+                                <RegisterForm />
                             </Stack>
-
-                            {/* REDIRECT TO REGISTER PAGE */}
-                            <Link to="/register">
-                                <Text color="gray.400"
-                                    fontSize={["md", "lg"]}
-                                >
-                                    Pengen punya akun juga?
-                                </Text>
-                            </Link>
                         </Stack>
                     </Box>
                 </Center>

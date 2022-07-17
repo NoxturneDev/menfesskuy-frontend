@@ -10,8 +10,8 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
-import FormInput from "../components/Forms/FormInput"
-import customToast from '../components/Toast';
+import FormInput from "../../components/Forms/FormInput"
+import customToast from '../../components/Toast';
 
 function SendMessage() {
     const { user } = useParams()
@@ -35,7 +35,6 @@ function SendMessage() {
 
     return (
         <>
-
             <Stack
                 flexDir="column"
                 mb="2"

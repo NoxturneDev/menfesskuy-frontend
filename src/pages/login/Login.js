@@ -9,7 +9,7 @@ import {
     Text,
     Heading
 } from '@chakra-ui/react'
-import Logo from "../assets/Logo.png"
+import Logo from "../../assets/Logo.png"
 import LoginForm from "./LoginForm"
 
 function Login() {
