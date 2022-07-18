@@ -16,6 +16,7 @@ import msgIcon from "../../assets/msgbox.png"
 import textIcon from "../../assets/msg-text.png"
 import logo from "../../assets/Logo.png"
 import { userCredential } from "../../api/data";
+import { PrimaryOutlineBtn, SecondaryOutlineBtn } from '../../components/ui/Buttons';
 
 function Dashboard() {
     const [name, setName] = useState('')
@@ -27,11 +28,11 @@ function Dashboard() {
         try {
             const user = await userCredential()
             const { username, user_link } = user.decoded
-        
+
             setLink(user_link)
             setName(username)
         } catch (err) {
-            if(err){
+            if (err) {
                 navigate('/')
             }
         }
@@ -116,7 +117,7 @@ function Dashboard() {
                     space={2}
                     m={[1, 2]}
                     p={4}
-                    w={["xs", "sm"]}
+                    w={["xs", "md"]}
                     zIndex="base"
                     align="center"
                     bg="gray.800"
@@ -148,20 +149,13 @@ function Dashboard() {
                         <ButtonGroup onClick={shareLink}
                             w="max-content"
                         >
-                            <Button
-                                bg="gray.800"
-                                color="gray.200"
-                                _hover={{ color: "dark.500" }}
-                            >Share Link gan</Button>
+                            <PrimaryOutlineBtn txt="share link gan" />
                         </ButtonGroup>
                         <ButtonGroup onClick={copyToClipboard}
                             w="max-content"
                         >
-                            <Button
-                                bg="dark.500"
-                                color="gray.200"
-                                _hover={{ color: "gray.800" }}
-                            >Copy to clipboard</Button>
+                            <SecondaryOutlineBtn txt="copy to clipboard" />
+
                         </ButtonGroup>
                     </Flex>
 

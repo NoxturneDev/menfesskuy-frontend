@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@chakra-ui/react'
-function Buttons({ txt, color, bg, hover, custom}) {
+function Buttons({ txt, color, bg, hover, custom, event}) {
     return (
         <Button
             borderRadius="sm"
@@ -13,6 +13,7 @@ function Buttons({ txt, color, bg, hover, custom}) {
             fontWeight="medium"
             letterSpacing="2px"
             textTransform="uppercase"
+            onClick={event}
         >
             {txt}
         </Button>

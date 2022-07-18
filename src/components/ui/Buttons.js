@@ -1,6 +1,6 @@
 import React from 'react'
 import ButtonBase from './ButtonBase'
-export const PrimaryBtn = ({ txt }) => {
+export const PrimaryBtn = ({ txt, event }) => {
     return (
         <>
             <ButtonBase
@@ -8,12 +8,13 @@ export const PrimaryBtn = ({ txt }) => {
                 bg="dark.500"
                 color="gray.800"
                 hover={{ bg: "light.500", color: "gray.800" }}
+                event={event}
             />
         </>
     )
 }
 
-export const PrimaryOutlineBtn = ({ txt }) => {
+export const PrimaryOutlineBtn = ({ txt, event}) => {
     return (
         <>
             <ButtonBase
@@ -21,25 +22,30 @@ export const PrimaryOutlineBtn = ({ txt }) => {
                 color="dark.500"
                 bg="gray.800"
                 hover={{ bg: "dark.500", color: "gray.800" }}
-                custom={{ border: `2px solid` }} />
+                custom={{ border: `2px solid` }} 
+                event={event}
+                />
+                
 
         </>
     )
 }
 
-export const SecondaryBtn = ({ txt }) => {
+export const SecondaryBtn = ({ txt, event }) => {
     return (
         <>
             <ButtonBase
                 txt={txt}
                 bg="light.500"
                 color="gray.800"
-                hover={{ bg: "light.900", color: "gray.800" }} />
+                hover={{ bg: "light.900", color: "gray.800" }} 
+                event={event}
+                />
         </>
     )
 }
 
-export const SecondaryOutlineBtn = ({ txt }) => {
+export const SecondaryOutlineBtn = ({ txt, event }) => {
     return (
         <>
             <ButtonBase
@@ -47,7 +53,9 @@ export const SecondaryOutlineBtn = ({ txt }) => {
                 color="light.500"
                 bg="gray.800"
                 hover={{ bg: "light.500", color: "gray.800" }}
-                custom={{ border: `2px solid` }} />
+                custom={{ border: `2px solid` }} 
+                event={event}
+                />
 
         </>
     )

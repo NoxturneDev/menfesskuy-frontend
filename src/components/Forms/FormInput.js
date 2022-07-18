@@ -22,10 +22,11 @@ function FormInput({ placeholder, state, type, children}) {
                         }
                         }
                         focusBorderColor="dark.900"
-                        borderColor="gray.700"
+                        borderColor="light.500"
                         color="gray.400"
-                        fontWeight="semibold"
-                        fontSize={["sm", "md"]}
+                        fontWeight="light"
+                        letterSpacing="1px"
+                        fontSize={["xs", "sm"]}
                         isRequired
                     />
                     {children}

@@ -9,7 +9,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom"
 import FormInput from "../../components/Forms/FormInput"
 import customToast from "../../components/Toast";
-
+import { PrimaryBtn, SecondaryBtn, PrimaryOutlineBtn, SecondaryOutlineBtn } from "../../components/ui/Buttons"
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -86,32 +86,10 @@ const Login = () => {
               </InputRightElement>
             </FormInput>
             <Stack>
-              <ButtonGroup>
-                <Button
-                  borderRadius="5px"
-                  type="submit"
-                  variant="solid"
-                  bgColor="dark.500"
-                  width="full"
-                  color="white"
-                  _hover={{ bgColor: "light.500" }}
-
-                >
-                  Register
-                </Button>
+              <ButtonGroup display="flex" justifyContent="center" alignItems="center">
+                <PrimaryOutlineBtn txt="Register" />
                 <Link to="/">
-                  <Button
-                    borderRadius="5px"
-                    type="submit"
-                    variant="solid"
-                    bgColor="light.500"
-                    width="full"
-                    color="white"
-                    _hover={{ bgColor: "light.500" }}
-
-                  >
-                    Cancel
-                  </Button>
+                  <SecondaryBtn txt="Cancel" />
                 </Link>
               </ButtonGroup>
             </Stack>

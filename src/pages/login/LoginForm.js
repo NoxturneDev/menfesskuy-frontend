@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import FormInput from "../../components/Forms/FormInput"
 import customToast from "../../components/Toast";
+import { PrimaryBtn, PrimaryOutlineBtn } from '../../components/ui/Buttons'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -72,18 +73,7 @@ const Login = () => {
                 </Button>
               </InputRightElement>
             </FormInput>
-            <Button
-              borderRadius="5px"
-              type="submit"
-              variant="solid"
-              bgColor="dark.500"
-              width="full"
-              color="white"
-              _hover={{ bgColor: "light.500" }}
-
-            >
-              Login
-            </Button>
+           <PrimaryOutlineBtn txt="login" />
           </form>
         </Stack>
       </Stack>

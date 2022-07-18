@@ -15,6 +15,7 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from "../assets/logo-text.png"
+import { PrimaryBtn } from './ui/Buttons';
 
 export default function Nav() {
   const navigate = useNavigate()
@@ -37,18 +38,8 @@ export default function Nav() {
           </Box>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-              <Button
-                onClick={logout}
-                bgColor="dark.500"
-                color="white"
-                _hover={{ color: "light.500", bgColor: "dark.900" }}
-                display={["none", "flex"]}
-              >
-
-                LOGOUT
-              </Button>
-
-              <Menu>
+              <PrimaryBtn txt="logout"  event={logout}/>
+              {/* <Menu>
                 <MenuButton
                   as={Button}
                   rounded={'full'}
@@ -80,7 +71,7 @@ export default function Nav() {
                     onClick={logout}
                   >Logout</MenuItem>
                 </MenuList>
-              </Menu>
+              </Menu> */}
             </Stack>
           </Flex>
         </Flex>
