@@ -5,27 +5,27 @@ export const PrimaryBtn = ({ txt, event }) => {
         <>
             <ButtonBase
                 txt={txt}
-                bg="dark.500"
-                color="gray.800"
-                hover={{ bg: "light.500", color: "gray.800" }}
+                bg="main.900"
+                color="second.100"
+                hover={{ bg: "main.900", color: "main.500" }}
                 event={event}
             />
         </>
     )
 }
 
-export const PrimaryOutlineBtn = ({ txt, event}) => {
+export const PrimaryOutlineBtn = ({ txt, event }) => {
     return (
         <>
             <ButtonBase
                 txt={txt}
-                color="dark.500"
+                color="main.500"
                 bg="gray.800"
-                hover={{ bg: "dark.500", color: "gray.800" }}
-                custom={{ border: `2px solid` }} 
+                hover={{ bg: "main.500", color: "second.100", border: "none" }}
+                custom={{ border: `2px solid` }}
                 event={event}
-                />
-                
+            />
+
 
         </>
     )
@@ -38,9 +38,9 @@ export const SecondaryBtn = ({ txt, event }) => {
                 txt={txt}
                 bg="light.500"
                 color="gray.800"
-                hover={{ bg: "light.900", color: "gray.800" }} 
+                hover={{ bg: "light.900", color: "gray.800" }}
                 event={event}
-                />
+            />
         </>
     )
 }
@@ -53,9 +53,9 @@ export const SecondaryOutlineBtn = ({ txt, event }) => {
                 color="light.500"
                 bg="gray.800"
                 hover={{ bg: "light.500", color: "gray.800" }}
-                custom={{ border: `2px solid` }} 
+                custom={{ border: `2px solid` }}
                 event={event}
-                />
+            />
 
         </>
     )

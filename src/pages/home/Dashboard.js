@@ -70,7 +70,7 @@ function Dashboard() {
                 justifyContent="center"
                 alignItems="center"
                 flexDir="column"
-                bgGradient='linear(to-l, #7928CA, #FF0080)'
+                bgGradient='linear(to-b, main.900, main.500, accent)'
                 overflow="hidden"
                 _before={{
                     content: '" "',
@@ -90,7 +90,7 @@ function Dashboard() {
                 <Flex
                     w={["xs", "sm"]}
                     h="sm"
-                    bg="gray.800"
+                    bg="dark.500"
                     boxShadow="lg"
                     rounded="md"
                     p={[4, 5]}

@@ -29,7 +29,7 @@ export default function Nav() {
   }
   return (
     <>
-      <Box bg="gray.800" px={4} zIndex="sticky">
+      <Box bg="main.900" px={4} zIndex="sticky">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box w="10rem">
             <Link to="/dashboard">

@@ -23,7 +23,7 @@ function Login() {
                 alignItems="center"
                 justifyContent="center"
                 flexDir="column"
-                bgGradient='linear(to-l, #7928CA, #FF0080)'
+                bgGradient='linear(to-b, main.900, main.500)'
             >
                 <Center py={6} mx={[3, 4]}>
                     {/* FORMS CARD */}

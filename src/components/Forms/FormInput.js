@@ -22,7 +22,7 @@ function FormInput({ placeholder, state, type, children}) {
                         }
                         }
                         focusBorderColor="dark.900"
-                        borderColor="light.500"
+                        borderColor="gray.600"
                         color="gray.400"
                         fontWeight="light"
                         letterSpacing="1px"

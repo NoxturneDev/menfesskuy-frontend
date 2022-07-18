@@ -3,17 +3,23 @@ import { Global } from '@emotion/react';
 
 const theme = extendTheme({
   colors: {
-    dark: {
-      500: "#8A00FF",
-      900:  "#6700FF"
+    main: {
+      100: "#B251AF",
+      500: "#CE219B",
+      900: "#410563"
     },
-    mid: "#B700FF",
-    light: {
-      500: "#DA00FF",
-      900: "#F500FF"
-    }
+    second: {
+      100: "#BDB0CC",
+      900: "#413060",
+    },
+    dark: {
+      100: "#3F0463",
+      500: "#270B39",
+      900: "#160238"
+    },
+    accent: "#FA9552"
   },
-  fonts:{
+  fonts: {
     body: `Poppins, ${base.fonts?.body}`
   },
   components: {

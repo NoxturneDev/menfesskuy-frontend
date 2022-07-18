@@ -37,7 +37,7 @@ function Message() {
                 justifyContent="center"
                 alignItems="start"
                 p={[4, 8]}
-                bgGradient='linear(to-l, #7928CA, #FF0080)'
+                bgGradient='linear(to-b, main.900, main.500, accent)'
                 _before={{
                     content: '" "',
                     bgImage: `"${logo}"`,

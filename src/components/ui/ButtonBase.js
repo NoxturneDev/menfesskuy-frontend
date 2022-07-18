@@ -1,15 +1,15 @@
 import React from 'react'
 import { Button } from '@chakra-ui/react'
-function Buttons({ txt, color, bg, hover, custom, event}) {
+function Buttons({ txt, color, bg, hover, custom, event }) {
     return (
         <Button
+            style={custom}
             borderRadius="sm"
             type="submit"
-            bgColor={!bg ? "dark.500" : bg}
+            bgColor={!bg ? "main.500" : bg}
             fontSize="sm"
-            color={!color ? 'dark.500' : color}
+            color={!color ? 'main.500' : color}
             _hover={hover}
-            style={custom}
             fontWeight="medium"
             letterSpacing="2px"
             textTransform="uppercase"
