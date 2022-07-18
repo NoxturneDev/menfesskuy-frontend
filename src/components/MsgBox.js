@@ -12,9 +12,8 @@ function MsgBox({ sender, msg }) {
       display={{ md: "flex" }}
       boxShadow="md"
       rounded="md"
-      borderWidth="2px"
-      borderColor="light.500"
-      margin={2}
+      minW="2xs"
+      margin={[2, 5]}
       bg="gray.800"
       maxW="xs"
       zIndex="1"

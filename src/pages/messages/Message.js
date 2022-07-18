@@ -10,7 +10,6 @@ import logo from "../../assets/Logo.png"
 import { getMessage } from '../../api/data';
 
 function Message() {
-    const [name, setName] = useState('')
     const { user } = useParams()
     const [msg, setMsg] = useState([])
 
@@ -35,7 +34,7 @@ function Message() {
                 minHeight="100vh"
                 h="max-content"
                 justifyContent="center"
-                alignItems="start"
+                alignItems="center"
                 p={[4, 8]}
                 bgGradient='linear(to-b, main.900, main.500, accent)'
                 _before={{
@@ -55,10 +54,12 @@ function Message() {
                 <Flex
 
                     flexDir={['column', 'row']}
-                    flexWrap="wrap">
+                    flexWrap="wrap"
+                    justifyContent={['', 'center']}
+                    alignItems={['', 'center']}>                    
                     {
                         msg.map(e => {
-                            return <MsgBox sender={e.from} msg={e.message} key={name} />
+                            return <MsgBox sender={e.from} msg={e.message} key={e.id} />
                         })
                     }
                 </Flex>
