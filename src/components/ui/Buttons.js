@@ -5,24 +5,22 @@ export const PrimaryBtn = ({ txt, event }) => {
         <>
             <ButtonBase
                 txt={txt}
-                bg="main.900"
-                color="second.100"
-                hover={{ bg: "main.900", color: "main.500" }}
+                color="main.500"
+                hover={{ bg: "main.500", color: "gray.900" }}
                 event={event}
             />
         </>
     )
 }
 
-export const PrimaryOutlineBtn = ({ txt, event }) => {
+export const PrimaryFillBtn = ({ txt, event }) => {
     return (
         <>
             <ButtonBase
                 txt={txt}
-                color="main.500"
-                bg="gray.800"
-                hover={{ bg: "main.500", color: "second.100", border: "none" }}
-                custom={{ border: `2px solid` }}
+                color="gray.900"
+                bg="main.500"
+                hover={{ opacity: "0.8" }}
                 event={event}
             />
 
@@ -36,24 +34,22 @@ export const SecondaryBtn = ({ txt, event }) => {
         <>
             <ButtonBase
                 txt={txt}
-                bg="light.500"
-                color="gray.800"
-                hover={{ bg: "light.900", color: "gray.800" }}
+                color="accent"
+                hover={{ bg: "accent", color: "gray.900" }}
                 event={event}
             />
         </>
     )
 }
 
-export const SecondaryOutlineBtn = ({ txt, event }) => {
+export const SecondaryFillBtn = ({ txt, event }) => {
     return (
         <>
             <ButtonBase
                 txt={txt}
-                color="light.500"
-                bg="gray.800"
-                hover={{ bg: "light.500", color: "gray.800" }}
-                custom={{ border: `2px solid` }}
+                bg="accent"
+                color="gray.900"
+                hover={{ opacity: "0.8" }}
                 event={event}
             />
 
@@ -61,35 +57,35 @@ export const SecondaryOutlineBtn = ({ txt, event }) => {
     )
 }
 
-// STYLE LATER ON
-export const CancelBtn = ({ txt }) => {
-    return (
-        <>
-            <ButtonBase
-                txt={txt}
-                color="dark.500"
-                bg="gray.800"
-                hover={{ bg: "dark.500" }}
-                custom={{ border: `2px solid` }} />
+// // STYLE LATER ON
+// export const CancelBtn = ({ txt }) => {
+//     return (
+//         <>
+//             <ButtonBase
+//                 txt={txt}
+//                 color="dark.500"
+//                 bg="gray.800"
+//                 hover={{ bg: "dark.500" }}
+//                 custom={{ border: `2px solid` }} />
 
-        </>
-    )
-}
+//         </>
+//     )
+// }
 
 
-export const CancelOutlineBtn = ({ txt }) => {
-    return (
-        <>
-            <ButtonBase
-                txt={txt}
-                color="dark.500"
-                bg="gray.800"
-                hover={{ bg: "dark.500" }}
-                custom={{ border: `2px solid` }} />
+// export const CancelOutlineBtn = ({ txt }) => {
+//     return (
+//         <>
+//             <ButtonBase
+//                 txt={txt}
+//                 color="dark.500"
+//                 bg="gray.800"
+//                 hover={{ bg: "dark.500" }}
+//                 custom={{ border: `2px solid` }} />
 
-        </>
-    )
-}
+//         </>
+//     )
+// }
 
 
 

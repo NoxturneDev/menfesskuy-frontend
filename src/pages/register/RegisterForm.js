@@ -9,7 +9,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom"
 import FormInput from "../../components/Forms/FormInput"
 import customToast from "../../components/Toast";
-import { PrimaryBtn, SecondaryBtn, PrimaryOutlineBtn, SecondaryOutlineBtn } from "../../components/ui/Buttons"
+import { PrimaryBtn, SecondaryBtn, PrimaryFillBtn, SecondaryFillBtn } from "../../components/ui/Buttons"
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -87,7 +87,7 @@ const Login = () => {
             </FormInput>
             <Stack>
               <ButtonGroup display="flex" justifyContent="center" alignItems="center">
-                <PrimaryOutlineBtn txt="Register" />
+                <PrimaryFillBtn txt="Register" />
                 <Link to="/">
                   <SecondaryBtn txt="Cancel" />
                 </Link>

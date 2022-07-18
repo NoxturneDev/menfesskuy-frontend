@@ -8,7 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import FormInput from "../../components/Forms/FormInput"
 import customToast from "../../components/Toast";
-import { PrimaryBtn, PrimaryOutlineBtn } from '../../components/ui/Buttons'
+import { PrimaryBtn, PrimaryFillBtn, SecondaryBtn, SecondaryFillBtn } from '../../components/ui/Buttons'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,7 +16,7 @@ const Login = () => {
   const [username, setUsername] = useState('')
   const [msg, setMsg] = useState('')
   const navigate = useNavigate()
-  
+
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -73,7 +73,8 @@ const Login = () => {
                 </Button>
               </InputRightElement>
             </FormInput>
-           <PrimaryOutlineBtn txt="login" />
+            <PrimaryBtn txt="login" />
+
           </form>
         </Stack>
       </Stack>

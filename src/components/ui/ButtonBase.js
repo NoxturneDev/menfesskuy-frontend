@@ -5,8 +5,9 @@ function Buttons({ txt, color, bg, hover, custom, event }) {
         <Button
             style={custom}
             borderRadius="sm"
+            px={[4, 6]}
             type="submit"
-            bgColor={!bg ? "main.500" : bg}
+            bgColor={bg == "none" ? 'none' : bg}
             fontSize="sm"
             color={!color ? 'main.500' : color}
             _hover={hover}
@@ -14,6 +15,8 @@ function Buttons({ txt, color, bg, hover, custom, event }) {
             letterSpacing="2px"
             textTransform="uppercase"
             onClick={event}
+            boxShadow="lg"
+            variant={!bg ? "ghost" : "fill"}
         >
             {txt}
         </Button>

@@ -16,7 +16,7 @@ import msgIcon from "../../assets/msgbox.png"
 import textIcon from "../../assets/msg-text.png"
 import logo from "../../assets/Logo.png"
 import { userCredential } from "../../api/data";
-import { PrimaryOutlineBtn, SecondaryOutlineBtn } from '../../components/ui/Buttons';
+import { PrimaryFillBtn, PrimaryBtn, SecondaryBtn } from '../../components/ui/Buttons';
 import Card from '../../components/ui/Card';
 function Dashboard() {
     const [name, setName] = useState('')
@@ -128,12 +128,12 @@ function Dashboard() {
                         <ButtonGroup onClick={shareLink}
                             w="max-content"
                         >
-                            <PrimaryOutlineBtn txt="share link gan" />
+                            <PrimaryFillBtn txt="share link gan" />
                         </ButtonGroup>
                         <ButtonGroup onClick={copyToClipboard}
                             w="max-content"
                         >
-                            <SecondaryOutlineBtn txt="copy to clipboard" />
+                            <SecondaryBtn txt="copy to clipboard" />
 
                         </ButtonGroup>
                     </Flex>
