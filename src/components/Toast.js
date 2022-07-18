@@ -18,16 +18,14 @@ function ErrorToast({ msg }) {
                 color='gray.200'
                 p={3}
                 bg='gray.800'
-                boxShadow="lg"
-                borderBottomWidth="3px"
-                borderBottomColor="light.500">
+                boxShadow="lg">
                 <Flex
                     justifyContent="start"
                     alignItems="center"
                     gap={4}>
-                    <WarningIcon w={6} h={6} color="light.500"/>
+                    <WarningIcon w={6} h={6} color="main.100"/>
                     <HStack>
-                        <Text color="light.500" fontWeight="semibold">ERROR!</Text>
+                        <Text color="main.100" fontWeight="semibold">ERROR!</Text>
                         <Text>{msg}</Text>
                     </HStack>
                 </Flex>
@@ -43,17 +41,14 @@ function SuccessToast({ msg }) {
                 color='gray.200'
                 p={3}
                 bg='gray.800'
-                // rounded="lg"
-                boxShadow="lg"
-                borderBottomWidth="3px"
-                borderBottomColor="blue.400">
+                boxShadow="lg">
                 <Flex
                     justifyContent="start"
                     alignItems="center"
                     gap={4}>
-                    <CheckIcon w={6} h={6} color="blue.400" />
+                    <CheckIcon w={6} h={6} color="main.500" />
                     <HStack>
-                        <Text color="blue.400" fontWeight="semibold">BERHASIL!</Text>
+                        <Text color="main.500" fontWeight="semibold">BERHASIL!</Text>
                         <Text>{msg}</Text>
                     </HStack>
                 </Flex>
@@ -65,10 +60,6 @@ function SuccessToast({ msg }) {
 function customToast(status, msg) {
     toast({
         position: "top",
-        // title: title,
-        // description: msg,
-        // status: status,
-        // duration: 9000,
         isClosable: true,
         render: () => (
             status === "error" && status !== "" ? <ErrorToast msg={msg} /> : <SuccessToast msg={msg} />
