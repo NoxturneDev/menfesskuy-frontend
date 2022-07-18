@@ -7,7 +7,7 @@ import {
 import axios from "axios";
 import FormInput from "../../components/Forms/FormInput"
 import customToast from '../../components/Toast';
-
+import { PrimaryBtn } from '../../components/ui/Buttons';
 function SendMessage() {
     const { user } = useParams()
     const [msg, setMsg] = useState('')
@@ -54,18 +54,7 @@ function SendMessage() {
                             state={setMsg}
                         >
                         </FormInput>
-                        <Button
-                            borderRadius="5px"
-                            type="submit"
-                            variant="solid"
-                            bgColor="dark.500"
-                            width="full"
-                            color="white"
-                            _hover={{ bgColor: "light.500" }}
-
-                        >
-                            Send!
-                        </Button>
+                       <PrimaryBtn txt="SEND!"></PrimaryBtn>
                     </form>
                 </Stack>
             </Stack>
