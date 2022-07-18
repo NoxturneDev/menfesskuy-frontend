@@ -23,8 +23,13 @@ function Dashboard() {
     const [link, setLink] = useState('')
     const navigate = useNavigate()
     const url = `http://localhost:3000/send/menfess/${link}`
+    const logStatus = localStorage.getItem('LoggedIn')
+
 
     const userData = async () => {
+        if (!logStatus) {
+            return navigate("/")
+        }
         try {
             const user = await userCredential()
             const { username, user_link } = user.decoded

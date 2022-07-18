@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
     Flex,
     Stack,
@@ -13,6 +13,12 @@ import Logo from "../../assets/Logo.png"
 import LoginForm from "./LoginForm"
 
 function Login() {
+    const logStatus = localStorage.getItem('LoggedIn')
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(logStatus) return navigate("/dashboard")
+    },[])
     return (
         <>
             {/* CONTAINER */}

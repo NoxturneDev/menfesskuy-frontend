@@ -23,6 +23,7 @@ export default function Nav() {
     try {
       await axios.delete('http://localhost:3001/logout', { withCredentials: true })
       navigate("/")
+      localStorage.removeItem("LoggedIn")
     } catch (err) {
       console.log(err)
     }

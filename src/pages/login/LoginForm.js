@@ -17,7 +17,6 @@ const Login = () => {
   const [msg, setMsg] = useState('')
   const navigate = useNavigate()
 
-
   const handleShowClick = () => setShowPassword(!showPassword);
 
   async function loginFunc(e) {
@@ -27,6 +26,8 @@ const Login = () => {
         username: username,
         password: password,
       }, { withCredentials: true })
+
+      localStorage.setItem('LoggedIn', true)
       navigate('/dashboard')
     } catch (err) {
       if (err.response) {
