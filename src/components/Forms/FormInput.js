@@ -21,7 +21,7 @@ function FormInput({ placeholder, state, type, children}) {
                             state(e.target.value)
                         }
                         }
-                        focusBorderColor="dark.900"
+                        focusBorderColor="main.500"
                         borderColor="gray.600"
                         color="gray.400"
                         fontWeight="light"

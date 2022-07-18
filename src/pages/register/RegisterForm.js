@@ -80,16 +80,23 @@ const Login = () => {
               state={setConfir}
             >
               <InputRightElement width="4.5rem">
-                <Button bg="dark.500" color="gray.200" h="1.75rem" size="sm" onClick={handleShowClick} _hover={{ bg: "dark.500" }}>
+                <Button
+                  bg="main.500"
+                  color="gray.200"
+                  h="1.75rem"
+                  size="sm"
+                  onClick={handleShowClick}
+                  _hover={{ opacity: "0.9" }}
+                  fontWeight="light">
                   {showPassword ? "Hide" : "Show"}
                 </Button>
               </InputRightElement>
             </FormInput>
             <Stack>
               <ButtonGroup display="flex" justifyContent="center" alignItems="center">
-                <PrimaryFillBtn txt="Register" />
+                <PrimaryBtn txt="Register" />
                 <Link to="/">
-                  <SecondaryBtn txt="Cancel" />
+                  <PrimaryFillBtn txt="Cancel" />
                 </Link>
               </ButtonGroup>
             </Stack>

@@ -67,7 +67,8 @@ function Login() {
                             {/* REDIRECT TO REGISTER PAGE */}
                             <Link to="/register">
                                 <Text color="gray.400"
-                                    fontSize={["md", "lg"]}
+                                    fontSize={["xs", "sm"]}
+                                    
                                 >
                                     Don't have an account?
                                 </Text>

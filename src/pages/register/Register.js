@@ -55,7 +55,7 @@ function Login() {
                                 width="90%"
                             >
                                 {/* FORMS COMPONENT */}
-                                <Heading fontSize={["md", "xl"]} color="gray.500" fontWeight="medium" borderBottomWidth="2px" borderBottomColor="dark.500">
+                                <Heading fontSize={["md", "xl"]} color="gray.500" fontWeight="medium" borderBottomWidth="4px" borderBottomColor="main.500">
                                     YUK GAN REGIS DULU
                                 </Heading>
                                 <RegisterForm />
