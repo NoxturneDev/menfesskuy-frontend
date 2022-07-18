@@ -17,7 +17,7 @@ import textIcon from "../../assets/msg-text.png"
 import logo from "../../assets/Logo.png"
 import { userCredential } from "../../api/data";
 import { PrimaryOutlineBtn, SecondaryOutlineBtn } from '../../components/ui/Buttons';
-
+import Card from '../../components/ui/Card';
 function Dashboard() {
     const [name, setName] = useState('')
     const [link, setLink] = useState('')
@@ -87,18 +87,7 @@ function Dashboard() {
                 }}
             >
                 {/* CARDS */}
-                <Flex
-                    w={["xs", "sm"]}
-                    h="sm"
-                    bg="dark.500"
-                    boxShadow="lg"
-                    rounded="md"
-                    p={[4, 5]}
-                    justifyContent="center"
-                    alignItems="center"
-                    zIndex="base"
-
-                >
+                <Card width={["xs", "sm"]} height="sm" position="flex">
                     <Stack
                         align="center"
                         textAlign="center"
@@ -110,20 +99,10 @@ function Dashboard() {
                             <img src={msgIcon} alt="msg-icon" />
                         </Link>
                     </Stack>
-                </Flex>
+                </Card>
 
                 {/* LINK BOX CONTAINER */}
-                <Stack
-                    space={2}
-                    m={[1, 2]}
-                    p={4}
-                    w={["xs", "md"]}
-                    zIndex="base"
-                    align="center"
-                    bg="gray.800"
-                    rounded="md"
-                    mt={[4, 6]}
-                >
+                <Card position="stack">
                     <Box
                         px={5}
                         py={3}
@@ -158,8 +137,7 @@ function Dashboard() {
 
                         </ButtonGroup>
                     </Flex>
-
-                </Stack>
+                </Card>
             </Flex>
         </>
     )
