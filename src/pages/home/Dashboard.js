@@ -44,13 +44,13 @@ function Dashboard() {
         }
     }
 
-    useEffect(() => {
-        try {
-            userData()
-        } catch {
-            console.log("error")
-        }
-    }, [dataStatus])
+    // useEffect(() => {
+    //     try {
+    //         userData()
+    //     } catch {
+    //         console.log("error")
+    //     }
+    // }, [dataStatus])
 
     function shareLink() {
         if (navigator.share) {
