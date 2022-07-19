@@ -23,7 +23,6 @@ function Dashboard() {
     const navigate = useNavigate()
     const url = `${process.env.REACT_APP_BACKEND_URL}/send/menfess/${link}`
     const logStatus = localStorage.getItem('LoggedIn')
-    const [dataStatus, setData] = useState(false)
 
     const userData = async () => {
         // if (!logStatus) {
@@ -38,9 +37,7 @@ function Dashboard() {
 
             setLink(user_link)
             // setName(username)
-            setData(true)
         } catch (err) {
-            setData(false)
             if (err) {
                 navigate('/')
             }
@@ -48,12 +45,8 @@ function Dashboard() {
     }
 
     useEffect(() => {
-        try {
-            userData()
-        } catch {
-            console.log("error")
-        }
-    }, [dataStatus])
+       userData()
+    }, [])
 
     function shareLink() {
         if (navigator.share) {
