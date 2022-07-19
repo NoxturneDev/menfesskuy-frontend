@@ -22,11 +22,12 @@ const Login = () => {
   async function loginFunc(e) {
     e.preventDefault()
     try {
-      await axios.post(`${process.env.REACT_APP_BACKEDN_URL}/login`, {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
         username: username,
         password: password,
       }, { withCredentials: true })
 
+      console.log(process.env.REACT_APP_BACKEND_URL)
       localStorage.setItem('LoggedIn', true)
       navigate('/dashboard')
     } catch (err) {
