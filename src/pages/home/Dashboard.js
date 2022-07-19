@@ -45,7 +45,7 @@ function Dashboard() {
 
     useEffect(() => {
         userData()
-    }, [])
+    }, [name])
 
     function shareLink() {
         if (navigator.share) {
