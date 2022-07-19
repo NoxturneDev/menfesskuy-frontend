@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react'
 import {
-    Button,
     Stack,
     Flex,
     Box,
@@ -16,15 +15,15 @@ import msgIcon from "../../assets/msgbox.png"
 import textIcon from "../../assets/msg-text.png"
 import logo from "../../assets/Logo.png"
 import { userCredential } from "../../api/data";
-import { PrimaryFillBtn, PrimaryBtn, SecondaryBtn } from '../../components/ui/Buttons';
+import { PrimaryFillBtn, SecondaryBtn } from '../../components/ui/Buttons';
 import Card from '../../components/ui/Card';
 function Dashboard() {
-    const [name, setName] = useState('')
+    // const [name, setName] = useState('')
     const [link, setLink] = useState('')
     const navigate = useNavigate()
     const url = `${process.env.REACT_APP_BACKEND_URL}/send/menfess/${link}`
     const logStatus = localStorage.getItem('LoggedIn')
-
+    const [dataStatus, setData] = useState(false)
 
     const userData = async () => {
         if (!logStatus) {
@@ -32,11 +31,13 @@ function Dashboard() {
         }
         try {
             const user = await userCredential()
-            const { username, user_link } = user.decoded
+            const { user_link } = user.decoded
 
             setLink(user_link)
-            setName(username)
+            // setName(username)
+            setData(true)
         } catch (err) {
+            setData(false)
             if (err) {
                 navigate('/')
             }
@@ -44,8 +45,12 @@ function Dashboard() {
     }
 
     useEffect(() => {
-        userData()
-    }, [name])
+        try {
+            userData()
+        } catch {
+            console.log("error")
+        }
+    }, [dataStatus])
 
     function shareLink() {
         if (navigator.share) {

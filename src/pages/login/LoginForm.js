@@ -8,7 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import FormInput from "../../components/Forms/FormInput"
 import customToast from "../../components/Toast";
-import { PrimaryBtn, PrimaryFillBtn, SecondaryBtn, SecondaryFillBtn } from '../../components/ui/Buttons'
+import { PrimaryBtn} from '../../components/ui/Buttons'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
