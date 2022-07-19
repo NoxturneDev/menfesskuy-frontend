@@ -2,15 +2,7 @@ import React from 'react';
 import {
   Box,
   Flex,
-  Avatar,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  Stack,
-  Center
+  Stack
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';

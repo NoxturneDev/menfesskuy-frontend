@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import {
-    Button,
     Stack
 } from "@chakra-ui/react";
 import axios from "axios";

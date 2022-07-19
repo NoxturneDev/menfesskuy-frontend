@@ -26,8 +26,11 @@ function Dashboard() {
     const [dataStatus, setData] = useState(false)
 
     const userData = async () => {
-        if (!logStatus) {
-            return navigate("/")
+        // if (!logStatus) {
+        //     return navigate("/")
+        // }
+        if(logStatus){
+            localStorage.removeItem('LoggedIn')
         }
         try {
             const user = await userCredential()
@@ -44,13 +47,13 @@ function Dashboard() {
         }
     }
 
-    // useEffect(() => {
-    //     try {
-    //         userData()
-    //     } catch {
-    //         console.log("error")
-    //     }
-    // }, [dataStatus])
+    useEffect(() => {
+        try {
+            userData()
+        } catch {
+            console.log("error")
+        }
+    }, [dataStatus])
 
     function shareLink() {
         if (navigator.share) {
