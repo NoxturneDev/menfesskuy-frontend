@@ -22,7 +22,7 @@ const Login = () => {
   async function loginFunc(e) {
     e.preventDefault()
     try {
-      await axios.post('http://localhost:3001/login', {
+      await axios.post(`${process.env.REACT_APP_BACKEDN_URL}/login`, {
         username: username,
         password: password,
       }, { withCredentials: true })

@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 
 export const getUserCredential = async () => {
     try {
-        const user = await axios.get('http://localhost:3001/api/token', { withCredentials: true })
+        const user = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/token`, { withCredentials: true })
         const token = user.data.accessToken
         const decoded = jwtDecode(token)
 
@@ -20,7 +20,7 @@ export const getUserMessage = async (user) => {
     const token = getToken.token
 
     try {
-        const messages = await axios.get(`http://localhost:3001/api/get/message/${user}`, {
+        const messages = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/get/message/${user}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

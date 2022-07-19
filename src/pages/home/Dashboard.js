@@ -22,7 +22,7 @@ function Dashboard() {
     const [name, setName] = useState('')
     const [link, setLink] = useState('')
     const navigate = useNavigate()
-    const url = `http://localhost:3000/send/menfess/${link}`
+    const url = `${process.env.REACT_APP_BACKEND_URL}/send/menfess/${link}`
     const logStatus = localStorage.getItem('LoggedIn')
 
 

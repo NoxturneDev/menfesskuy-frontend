@@ -24,7 +24,7 @@ const Login = () => {
   async function registerUser(e) {
     try {
       e.preventDefault()
-      await axios.post('http://localhost:3001/api/users', {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users`, {
         username: username,
         password: password,
         confirmationPass: confirPass

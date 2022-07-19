@@ -17,7 +17,7 @@ function SendMessage() {
     const sendMessage = async (e) => {
         e.preventDefault()
         try {
-            await axios.post(`http://localhost:3001/api/send/message/${user}`, {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/send/message/${user}`, {
                 from: from,
                 message: msg
             })
