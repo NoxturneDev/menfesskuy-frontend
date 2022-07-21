@@ -39,7 +39,7 @@ function Dashboard() {
             // setName(username)
         } catch (err) {
             if (err) {
-                // navigate('/')
+                navigate('/')
             }
         }
     }
