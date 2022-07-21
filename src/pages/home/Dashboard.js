@@ -21,9 +21,10 @@ function Dashboard() {
     // const [name, setName] = useState('')
     const [link, setLink] = useState('')
     const navigate = useNavigate()
-    const url = `https://menfesskuy.netlify.app/send/menfess/${link}`
+    const url = `${window.location.origin.toString()}/send/menfess/${link}`
     const logStatus = localStorage.getItem('LoggedIn')
 
+    console.log(url)
     const userData = async () => {
         // if (!logStatus) {
         //     return navigate("/")
