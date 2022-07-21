@@ -17,6 +17,8 @@ import logo from "../../assets/Logo.png"
 import { userCredential } from "../../api/data";
 import { PrimaryFillBtn, SecondaryBtn } from '../../components/ui/Buttons';
 import Card from '../../components/ui/Card';
+import axios from "axios";
+import jwtDecode from "jwt-decode";
 function Dashboard() {
     // const [name, setName] = useState('')
     const [link, setLink] = useState('')
@@ -47,7 +49,7 @@ function Dashboard() {
             const user = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/token`, { withCredentials: true })
             const token = user.data.accessToken
             const decoded = jwtDecode(token)
-    
+
             console.log(token)
         } catch (err) {
             if (err) {
@@ -57,7 +59,7 @@ function Dashboard() {
     }
 
     useEffect(() => {
-       userData()
+        userData()
     }, [])
 
     function shareLink() {
