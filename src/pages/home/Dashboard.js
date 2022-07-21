@@ -17,8 +17,6 @@ import logo from "../../assets/Logo.png"
 import { userCredential } from "../../api/data";
 import { PrimaryFillBtn, SecondaryBtn } from '../../components/ui/Buttons';
 import Card from '../../components/ui/Card';
-import axios from "axios";
-import jwtDecode from "jwt-decode";
 function Dashboard() {
     // const [name, setName] = useState('')
     const [link, setLink] = useState('')
@@ -29,37 +27,25 @@ function Dashboard() {
     const userData = async () => {
         // if (!logStatus) {
         //     return navigate("/")
-        // // }
-        // if(logStatus){
-        //     localStorage.removeItem('LoggedIn')
         // }
-        // try {
-        //     const user = await userCredential()
-        //     const { user_link } = user.decoded
-
-        //     setLink(user_link)
-        //     // setName(username)
-        // } catch (err) {
-        //     if (err) {
-        //         // navigate('/')
-        //     }
-        // }
-
+        if(logStatus){
+            localStorage.removeItem('LoggedIn')
+        }
         try {
-            const user = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/token`, { withCredentials: true })
-            const token = user.data.accessToken
-            const decoded = jwtDecode(token)
+            const user = await userCredential()
+            const { user_link } = user.decoded
 
-            console.log(token)
+            setLink(user_link)
+            // setName(username)
         } catch (err) {
             if (err) {
-                throw err
+                // navigate('/')
             }
         }
     }
 
     useEffect(() => {
-        userData()
+       userData()
     }, [])
 
     function shareLink() {
