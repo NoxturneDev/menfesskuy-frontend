@@ -27,19 +27,31 @@ function Dashboard() {
     const userData = async () => {
         // if (!logStatus) {
         //     return navigate("/")
+        // // }
+        // if(logStatus){
+        //     localStorage.removeItem('LoggedIn')
         // }
-        if(logStatus){
-            localStorage.removeItem('LoggedIn')
-        }
-        try {
-            const user = await userCredential()
-            const { user_link } = user.decoded
+        // try {
+        //     const user = await userCredential()
+        //     const { user_link } = user.decoded
 
-            setLink(user_link)
-            // setName(username)
+        //     setLink(user_link)
+        //     // setName(username)
+        // } catch (err) {
+        //     if (err) {
+        //         // navigate('/')
+        //     }
+        // }
+
+        try {
+            const user = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/token`, { withCredentials: true })
+            const token = user.data.accessToken
+            const decoded = jwtDecode(token)
+    
+            console.log(token)
         } catch (err) {
             if (err) {
-                // navigate('/')
+                throw err
             }
         }
     }
