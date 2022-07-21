@@ -27,8 +27,8 @@ const Login = () => {
         password: password,
       }, { withCredentials: true })
 
-      console.log(process.env.REACT_APP_BACKEND_URL)
-      localStorage.setItem('LoggedIn', true)
+      // console.log(process.env.REACT_APP_BACKEND_URL)
+      // localStorage.setItem('LoggedIn', true)
       navigate('/dashboard')
     } catch (err) {
       if (err.response) {
