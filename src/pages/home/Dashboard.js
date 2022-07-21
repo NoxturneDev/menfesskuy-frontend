@@ -21,14 +21,14 @@ function Dashboard() {
     // const [name, setName] = useState('')
     const [link, setLink] = useState('')
     const navigate = useNavigate()
-    const url = `${process.env.REACT_APP_BACKEND_URL}/send/menfess/${link}`
+    const url = `https://menfesskuy.netlify.app/send/menfess/${link}`
     const logStatus = localStorage.getItem('LoggedIn')
 
     const userData = async () => {
         // if (!logStatus) {
         //     return navigate("/")
         // }
-        if(logStatus){
+        if (logStatus) {
             localStorage.removeItem('LoggedIn')
         }
         try {
@@ -45,7 +45,7 @@ function Dashboard() {
     }
 
     useEffect(() => {
-       userData()
+        userData()
     }, [])
 
     function shareLink() {
