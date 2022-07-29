@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import {
     Stack,
@@ -14,7 +14,7 @@ function SendMessage() {
     const [msg, setMsg] = useState('')
     const [from, setFrom] = useState('')
     const [loading, setLoading] = useState(false)
-
+    const [errMsg, setErr] = useState('')
     const sendMessage = async (e) => {
         e.preventDefault()
         try {
@@ -27,10 +27,17 @@ function SendMessage() {
             customToast('success', 'Berhasil', 'Pesan berhasil dikirim')
             setLoading(false)
         } catch (err) {
+            setErr(err.response.data.msg)
             setLoading(false)
-            customToast('error', 'Gagal', 'Pesan gagal dikirim')
         }
     }
+
+    useEffect(() => {
+        // IF THERE'S ERROR, INVOKE THE TOAST
+        if (errMsg !== '') {
+            customToast('error', errMsg)
+        }
+      }, [errMsg])
 
     return (
         <>

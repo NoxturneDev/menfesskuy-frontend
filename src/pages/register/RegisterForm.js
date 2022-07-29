@@ -27,8 +27,9 @@ const Login = () => {
     try {
       e.preventDefault()
       setLoading(true)
+      const trimmedUsername = username.trim()
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users`, {
-        username: username,
+        username: trimmedUsername,
         password: password,
         confirmationPass: confirPass
       }, { withCredentials: true })
