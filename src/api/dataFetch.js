@@ -28,8 +28,8 @@ export const getUserMessage = async (user) => {
 
         return messages
     }
-    catch {
-        return null
+    catch (err){
+        return err
     }
 }
 

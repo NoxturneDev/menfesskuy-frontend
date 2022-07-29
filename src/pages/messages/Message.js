@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {
-    Flex
+    Flex,
+    Heading
 } from "@chakra-ui/react"
 import MsgBox from "../../components/MsgBox";
 import Nav from "../../components/Navbar";
@@ -8,20 +9,32 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import logo from "../../assets/Logo.png"
 import { getMessage } from '../../api/data';
-
+import Loader from '../../components/ui/Loader';
 function Message() {
     const { user } = useParams()
     const [msg, setMsg] = useState([])
+    const [loading, setLoading] = useState(false)
 
     const messages = async () => {
         try {
+            setLoading(true)
             const data = await getMessage(user)
             setMsg(data)
+            setLoading(false)
         } catch (err) {
-            throw err
+            console.log(err)
+            setLoading(false)
         }
     }
 
+    const showMsg = () => {
+        if (msg.length > 0) {
+            return msg.map(e => {
+                return <MsgBox sender={e.from} msg={e.message} key={e.id} />
+            })
+        }
+        return <MsgBox newUser="true" />
+    }
 
     useEffect(() => {
         messages()
@@ -56,12 +69,8 @@ function Message() {
                     flexDir={['column', 'row']}
                     flexWrap="wrap"
                     justifyContent={['', 'center']}
-                    alignItems={['', 'center']}>                    
-                    {
-                        msg.map(e => {
-                            return <MsgBox sender={e.from} msg={e.message} key={e.id} />
-                        })
-                    }
+                    alignItems={['', 'center']}>
+                    {loading ? <Loader /> : showMsg()}
                 </Flex>
             </Flex>
         </>

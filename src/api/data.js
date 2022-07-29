@@ -13,8 +13,11 @@ export const userCredential = async () => {
 
 export const getMessage = async (user) => {
     try {
-        const messages = await getUserMessage(user)
-        return messages.data.msg
+        const fetch = await getUserMessage(user)
+        if (fetch.status === 200) {
+            return fetch.data.msg
+        }
+        return []
     } catch (err) {
         if (err) {
             throw err

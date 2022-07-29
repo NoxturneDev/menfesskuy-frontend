@@ -5,7 +5,7 @@ import {
   Stack
 } from "@chakra-ui/react";
 
-function MsgBox({ sender, msg }) {
+function MsgBox({ sender, msg, newUser }) {
   return (
     <Box
       p={[4, 8]}
@@ -29,14 +29,14 @@ function MsgBox({ sender, msg }) {
           fontSize="sm"
           color="gray.200"
         >
-          From : {sender}
+          {newUser ? 'Kamu blm punya pesan' : sender}
         </Text>
         <Text color="gray.400">
-          message: <br />{msg}
+          message: <br /> {newUser ? 'Share link punya kamu biar temen-temen kamu bisa ngirim menfess buat kamu!' : msg}
         </Text>
       </Stack>
     </Box>
-  );
+  );  
 }
 
 export default MsgBox;
