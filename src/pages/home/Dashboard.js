@@ -53,7 +53,9 @@ function Dashboard() {
         if (navigator.share) {
             console.log('ANJAY BISA')
             navigator.share({
-                url: url
+                url: url,
+                title: 'Menfess yuk!',
+                text: 'Kirim menfess buat gw dong cuy! apa aja bebas deh'
             }).then(() => {
                 console.log('sucess')
                 customToast('success', 'Berhasil', 'Link udah di share gan')
