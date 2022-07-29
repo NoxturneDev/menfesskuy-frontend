@@ -15,7 +15,7 @@ import msgIcon from "../../assets/msgbox.png"
 import textIcon from "../../assets/msg-text.png"
 import logo from "../../assets/Logo.png"
 import { userCredential } from "../../api/data";
-import { PrimaryFillBtn, SecondaryBtn } from '../../components/ui/Buttons';
+import { PrimaryFillBtn, SecondaryBtn, PrimaryBtn } from '../../components/ui/Buttons';
 import Card from '../../components/ui/Card';
 function Dashboard() {
     // const [name, setName] = useState('')
@@ -103,6 +103,9 @@ function Dashboard() {
                         </Box>
                         <Link to={`/message/${link}`}>
                             <img src={msgIcon} alt="msg-icon" />
+                        </Link>
+                        <Link to={`/message/${link}`}>
+                            <PrimaryBtn txt="Cek Pesan Kamu!"></PrimaryBtn>
                         </Link>
                     </Stack>
                 </Card>
