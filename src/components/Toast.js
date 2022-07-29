@@ -65,6 +65,10 @@ function customToast(status, msg) {
             status === "error" && status !== "" ? <ErrorToast msg={msg} /> : <SuccessToast msg={msg} />
         ),
     })
+    // clear toast 
+    setTimeout(() => {
+        toast.closeAll()
+    } ,3000)
 }
 
 
