@@ -3,7 +3,8 @@ import {
   Button,
   Stack,
   InputRightElement,
-  ButtonGroup
+  ButtonGroup,
+  Spinner
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom"
@@ -18,22 +19,26 @@ const Login = () => {
   const [confirPass, setConfir] = useState('')
   const [msg, setMsg] = useState('')
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
   async function registerUser(e) {
     try {
       e.preventDefault()
+      setLoading(true)
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users`, {
         username: username,
         password: password,
         confirmationPass: confirPass
       }, { withCredentials: true })
       customToast('success', 'Akun berhasil dibuat, kembali ke halaman login...')
+      setLoading(false)
       setTimeout(() => {
         navigate('/')
-      }, 4000)
+      }, 3000)
     } catch (err) {
+      setLoading(false)
       if (err.response) {
         setMsg(err.response.data.msg)
       }
@@ -94,7 +99,13 @@ const Login = () => {
             </FormInput>
             <Stack>
               <ButtonGroup display="flex" justifyContent="center" alignItems="center">
-                <PrimaryBtn txt="Register" />
+                {loading ? <Spinner
+                  thickness='7px'
+                  speed='0.75s'
+                  emptyColor='gray.800'
+                  color='main.500'
+                  size='xl'
+                /> : <PrimaryBtn txt="Register" />}
                 <Link to="/">
                   <PrimaryFillBtn txt="Cancel" />
                 </Link>
