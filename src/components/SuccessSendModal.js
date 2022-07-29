@@ -25,7 +25,7 @@ function SuccessSendModal({ hidden }) {
             >
                 <CheckIcon color="main.500" w={16} h={16} />
                 <Heading color="gray.200">Pesan berhasil dikirim</Heading>
-                <ButtonGroup>
+                <ButtonGroup display="flex" flexDirection={['column', 'row']}>
                     <PrimaryBtn txt="Kirim lagi ga cuy" event={e => {
                         e.preventDefault()
                         window.location.reload()
