@@ -28,6 +28,7 @@ function FormInput({ placeholder, state, type, children}) {
                         letterSpacing="1px"
                         fontSize={["xs", "sm"]}
                         isRequired
+                        autoComplete='off'
                     />
                     {children}
                 </InputGroup>
