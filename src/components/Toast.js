@@ -11,6 +11,9 @@ import { CheckIcon, WarningIcon } from '@chakra-ui/icons'
 
 
 const { toast } = createStandaloneToast()
+const successId = 'success'
+const errorId = 'error'
+
 
 function ErrorToast({ msg }) {
     return (
@@ -60,17 +63,16 @@ function SuccessToast({ msg }) {
 }
 
 function customToast(status, msg) {
-    toast({
-        position: "top",
-        isClosable: true,
-        render: () => (
-            status === "error" && status !== "" ? <ErrorToast msg={msg} /> : <SuccessToast msg={msg} />
-        ),
-    })
-    // clear toast 
-    setTimeout(() => {
-        toast.closeAll()
-    }, 3000)
+    if(!toast.isActive(status === "error" ? errorId : successId)){
+        toast({
+            id: status === "error" ? errorId : successId,
+            position: "top",
+            isClosable: true,
+            render: () => (
+                status === "error" && status !== "" ? <ErrorToast msg={msg} /> : <SuccessToast msg={msg} />
+            ),
+        })
+    }
 }
 
 
