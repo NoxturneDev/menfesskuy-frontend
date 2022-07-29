@@ -3,7 +3,8 @@ import {
     Box,
     Flex,
     Text,
-    HStack
+    HStack,
+    Progress
 } from "@chakra-ui/react"
 import React from "react"
 import { CheckIcon, WarningIcon } from '@chakra-ui/icons'
@@ -23,7 +24,7 @@ function ErrorToast({ msg }) {
                     justifyContent="start"
                     alignItems="center"
                     gap={4}>
-                    <WarningIcon w={6} h={6} color="main.100"/>
+                    <WarningIcon w={6} h={6} color="main.100" />
                     <HStack>
                         <Text color="main.100" fontWeight="semibold">ERROR!</Text>
                         <Text>{msg}</Text>
@@ -53,6 +54,7 @@ function SuccessToast({ msg }) {
                     </HStack>
                 </Flex>
             </Box>
+            <Progress isIndeterminate bgColor="gray.800" colorScheme="pink" size="sm" />
         </>
     )
 }
@@ -68,7 +70,7 @@ function customToast(status, msg) {
     // clear toast 
     setTimeout(() => {
         toast.closeAll()
-    } ,3000)
+    }, 3000)
 }
 
 
