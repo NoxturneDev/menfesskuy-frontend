@@ -14,7 +14,7 @@ export default function Nav() {
   const logout = async () => {
     try {
 
-      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}logout`, { withCredentials: true })
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/logout`, { withCredentials: true })
       customToast('success', 'Berhasil logout...')
       setTimeout(() => {
         navigate("/")
