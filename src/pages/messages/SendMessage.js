@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import {
     Flex,
@@ -10,10 +10,14 @@ import {
 } from '@chakra-ui/react'
 import Logo from "../../assets/Logo.png"
 import SendMsgForm from "./SendMsgForm"
-
+import SuccessSendModal from '../../components/SuccessSendModal'
 function Login() {
+    const [success, setSuccess] = useState(false)
+    console.log(success)
+
     return (
         <>
+
             {/* CONTAINER */}
             <Flex
                 minWidth="100vw"
@@ -24,6 +28,8 @@ function Login() {
                 flexDir="column"
                 bgGradient='linear(to-l, #7928CA, #FF0080)'
             >
+            <SuccessSendModal hidden={success ? false : true} />
+
                 <Center py={6} mx={[3, 4]}>
                     {/* FORMS CARD */}
                     <Box
@@ -34,6 +40,7 @@ function Login() {
                         rounded={'md'}
                         overflow={'hidden'}
                         py={{ sm: 1, md: 4 }}
+                        hidden={success ? true : false}
                     >
 
                         <Stack
@@ -60,7 +67,7 @@ function Login() {
                                 <Heading fontSize={["lg", "2xl"]} color="gray.500">
                                     Isi pesan rahasiamu
                                 </Heading>
-                                <SendMsgForm />
+                                <SendMsgForm success={setSuccess}/>
                             </Stack>
 
                             {/* REDIRECT TO REGISTER PAGE */}
