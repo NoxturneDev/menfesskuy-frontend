@@ -9,8 +9,8 @@ function SuccessSendModal({ hidden }) {
     return (
         <>
             <Flex
-                w="50vw"
-                h="50vh"
+                w={["80vw", "50vw"]}
+                h={["60vh", "50vh"]}
                 bg="dark.500"
                 boxShadow="lg"
                 rounded="md"
@@ -21,11 +21,11 @@ function SuccessSendModal({ hidden }) {
                 m={[4, 6]}
                 position="absolute"
                 flexDirection='column'
-                gap={4}
+                gap={[10, 4]}
             >
                 <CheckIcon color="main.500" w={16} h={16} />
-                <Heading color="gray.200">Pesan berhasil dikirim</Heading>
-                <ButtonGroup display="flex" flexDirection={['column', 'row']}>
+                <Heading color="gray.200" textAlign="center">Pesan berhasil dikirim</Heading>
+                <ButtonGroup display="flex" flexDirection={['column', 'row']} gap={[6, 4]} w="full" justifyContent="center" alignItems="center">
                     <PrimaryBtn txt="Kirim lagi ga cuy" event={e => {
                         e.preventDefault()
                         window.location.reload()
