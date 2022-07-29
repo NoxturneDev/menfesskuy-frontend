@@ -13,6 +13,7 @@ function Card({ children, width, height, position }) {
                 justifyContent="center"
                 alignItems="center"
                 zIndex="base"
+                m={[4, 6]}
             >
                 {children}
             </Flex>
