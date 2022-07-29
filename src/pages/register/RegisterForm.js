@@ -33,10 +33,10 @@ const Login = () => {
         confirmationPass: confirPass
       }, { withCredentials: true })
       customToast('success', 'Akun berhasil dibuat, kembali ke halaman login...')
-      setLoading(false)
       setTimeout(() => {
         navigate('/')
       }, 3000)
+      setLoading(false)
     } catch (err) {
       setLoading(false)
       if (err.response) {

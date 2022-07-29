@@ -1,28 +1,33 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import {
-    Stack
+    Stack,
+    Spinner
 } from "@chakra-ui/react";
 import axios from "axios";
 import FormInput from "../../components/Forms/FormInput"
 import customToast from '../../components/Toast';
 import { PrimaryBtn } from '../../components/ui/Buttons';
+
 function SendMessage() {
     const { user } = useParams()
     const [msg, setMsg] = useState('')
     const [from, setFrom] = useState('')
-
+    const [loading, setLoading] = useState(false)
 
     const sendMessage = async (e) => {
         e.preventDefault()
         try {
+            setLoading(true)
             await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/send/message/${user}`, {
                 from: from,
                 message: msg
             })
 
             customToast('success', 'Berhasil', 'Pesan berhasil dikirim')
+            setLoading(false)
         } catch (err) {
+            setLoading(false)
             customToast('error', 'Gagal', 'Pesan gagal dikirim')
         }
     }
@@ -53,7 +58,13 @@ function SendMessage() {
                             state={setMsg}
                         >
                         </FormInput>
-                       <PrimaryBtn txt="SEND!"></PrimaryBtn>
+                        {loading ? <Spinner
+                            thickness='7px'
+                            speed='0.75s'
+                            emptyColor='gray.800'
+                            color='main.500'
+                            size='xl'
+                        /> : <PrimaryBtn txt="Send!" />}
                     </form>
                 </Stack>
             </Stack>
