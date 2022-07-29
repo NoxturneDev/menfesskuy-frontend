@@ -37,6 +37,9 @@ export default function Nav() {
           </Box>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
+              <Link to="/dashboard">
+                <PrimaryBtn txt="Home" />
+              </Link>
               <PrimaryBtn txt="logout" event={logout} />
               {/* <Menu>
                 <MenuButton
