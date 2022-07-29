@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 import FormInput from "../../components/Forms/FormInput"
 import customToast from "../../components/Toast";
 import { PrimaryBtn } from '../../components/ui/Buttons'
-import Loader from "../../components/ui/Loader";
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('')
@@ -32,7 +32,11 @@ const Login = () => {
 
       // console.log(process.env.REACT_APP_BACKEND_URL)
       // localStorage.setItem('LoggedIn', true)
-      navigate('/dashboard')
+      customToast('success', 'Berhasil Login...')
+      setTimeout(() => {
+        navigate('/dashboard')
+
+      }, 3000)
     } catch (err) {
       if (err.response) {
         setMsg(err.response.data.msg)
