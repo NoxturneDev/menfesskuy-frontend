@@ -8,15 +8,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from "../assets/logo-text.png"
 import { PrimaryBtn } from './ui/Buttons';
-
+import customToast from './Toast';
 export default function Nav() {
   const navigate = useNavigate()
   const logout = async () => {
     try {
-      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/logout`, { withCredentials: true })
-      navigate("/")
+
+      await axios.delete('http://localhost:3001/logout', { withCredentials: true })
+      customToast('success', 'Berhasil logout...')
+      setTimeout(() => {
+        navigate("/")
+      }, 3000)
+
       localStorage.removeItem("LoggedIn")
     } catch (err) {
+      customToast('error', 'Gagal logout...')
       console.log(err)
     }
   }
@@ -31,7 +37,7 @@ export default function Nav() {
           </Box>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-              <PrimaryBtn txt="logout"  event={logout}/>
+              <PrimaryBtn txt="logout" event={logout} />
               {/* <Menu>
                 <MenuButton
                   as={Button}
